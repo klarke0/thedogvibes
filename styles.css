@@ -1,6 +1,11 @@
 /* The Dog Vibes — Global Styles */
 /* Colors: #111 (near-black), #FFF, #F9F8F6 (warm off-white) */
-/* Fonts: Playfair Display (h1, logo), Montserrat (h2-h4, UI), Source Sans Pro (body) */
+/* Fonts: Montserrat (headings, UI), Source Sans Pro (body) */
+
+/* Force light color scheme — prevents Android/OS dark mode from inverting colors */
+:root {
+  color-scheme: light;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -87,6 +92,15 @@ p:last-child {
 }
 
 .section--dark a {
+  color: #fff;
+}
+
+/* Ensure button text colors are never overridden by section link colors */
+.section--dark a.btn--primary-inverted {
+  color: #111;
+}
+
+.section--dark a.btn--primary {
   color: #fff;
 }
 
@@ -229,9 +243,11 @@ p:last-child {
   display: block;
   width: 24px;
   height: 2px;
-  background: #000;
+  background: #111;
   margin: 5px 0;
   transition: 0.3s;
+  /* Force visibility in all color modes */
+  -webkit-appearance: none;
 }
 
 /* Hero Section */
@@ -260,6 +276,44 @@ p:last-child {
   width: 100%;
   height: 500px;
   object-fit: cover;
+}
+
+/* Hero — Logo-centered variant (homepage) */
+.hero--logo .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+
+.hero__logo-feature {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.hero__logo-feature img {
+  width: 100%;
+  height: auto;
+}
+
+.hero__content--centered {
+  max-width: 700px;
+}
+
+.hero__content--centered h1 {
+  margin-bottom: 24px;
+}
+
+.hero__content--centered p {
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+  .hero__logo-feature {
+    max-width: 240px;
+  }
 }
 
 /* Trust Bar */
@@ -375,13 +429,14 @@ p:last-child {
   border: none;
   text-align: left;
   padding: 20px 0;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #111;
 }
 
 .faq-question::after {
@@ -730,7 +785,7 @@ p:last-child {
   .nav {
     display: none;
     position: absolute;
-    top: 72px;
+    top: 96px;
     left: 0;
     right: 0;
     background: #fff;
@@ -738,15 +793,29 @@ p:last-child {
     padding: 24px;
     gap: 16px;
     border-bottom: 1px solid #eee;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    z-index: 99;
   }
 
   .nav.open {
     display: flex;
   }
+
+  .hiw-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .credentials-table td:first-child {
+    width: auto;
+  }
 }
 
 @media (max-width: 600px) {
   .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hiw-grid {
     grid-template-columns: 1fr;
   }
 
@@ -758,11 +827,27 @@ p:last-child {
     padding: 60px 0;
   }
 
+  .hero {
+    padding: 60px 0;
+  }
+
   .service-card {
     padding: 24px;
   }
 
   .pull-quote {
     font-size: 20px;
+  }
+
+  .header .container {
+    height: 72px;
+  }
+
+  .header__logo img {
+    height: 56px;
+  }
+
+  .nav {
+    top: 72px;
   }
 }
