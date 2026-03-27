@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | The Dog Vibes | Dog Training Tips & Insights</title>
+  <meta name="description" content="Dog training insights, tips, and honest advice from Kevin Clarke at The Dog Vibes. Portland, OR.">
+  <!-- Google Analytics 4 -->
+  <!-- TODO: Replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.png" alt="The Dog Vibes logo">
+        <span>The Dog Vibes</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+        <a href="book.html" class="btn btn--primary">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Blog Index -->
+  <section class="section">
+    <div class="container narrow">
+      <h1>From the blog.</h1>
+      <p style="margin-top: 16px; font-size: 18px;">Honest writing about dogs, training, and what actually works.</p>
+
+      <div style="margin-top: 56px;">
+
+        <div style="border-bottom: 1px solid #e5e5e5; padding-bottom: 48px; margin-bottom: 48px;">
+          <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 12px;">Training</p>
+          <h2 style="font-size: 28px; margin-bottom: 16px;"><a href="blog-leash.html" style="color: inherit; text-decoration: none;">The Leash We Can Do</a></h2>
+          <p style="font-size: 18px; color: #444; margin-bottom: 24px;">Why walking your dog is about so much more than exercise. A consistent walk routine is probably the highest-return thing you can do for your dog's behavior.</p>
+          <a href="blog-leash.html" style="font-weight: 600; text-decoration: underline; color: #111;">Read the post</a>
+        </div>
+
+        <div style="padding-bottom: 48px;">
+          <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; margin-bottom: 12px;">Enrichment</p>
+          <h2 style="font-size: 28px; margin-bottom: 16px;"><a href="blog-enrichment.html" style="color: inherit; text-decoration: none;">Your Dog Doesn't Need to Be Tired. They Need to Be Fulfilled.</a></h2>
+          <p style="font-size: 18px; color: #444; margin-bottom: 24px;">Most behavioral problems aren't training problems. They're enrichment problems. Here's the difference between physical exercise and mental stimulation, and why it matters.</p>
+          <a href="blog-enrichment.html" style="font-weight: 600; text-decoration: underline; color: #111;">Read the post</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark">
+    <div class="container narrow text-center">
+      <h2>Have a question about your dog?</h2>
+      <p style="margin-top: 24px;">Book a free Discovery Consultation. We'll talk through what's going on and figure out the right path forward.</p>
+      <div style="margin-top: 32px;">
+        <a href="book.html" class="btn btn--primary-inverted">Book a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="images/logo.png" alt="The Dog Vibes logo" style="height: 40px; filter: invert(1);">
+          <p>Personalized dog training for real dogs and the people who love them.<br>Portland, OR &middot; Remote sessions available nationwide.</p>
+        </div>
+        <div class="footer__links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="book.html">Book a Consultation</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <h4>Contact</h4>
+          <p><a href="mailto:kevin@thedogvibes.com">kevin@thedogvibes.com</a></p>
+          <p>Portland, Oregon</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 The Dog Vibes. All rights reserved.</span>
+        <span>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
