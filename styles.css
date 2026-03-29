@@ -15,6 +15,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* matches sticky header height */
+}
+
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 72px; /* matches mobile header height */
+  }
 }
 
 body {
@@ -24,6 +31,7 @@ body {
   line-height: 1.7;
   color: #111;
   background: #fff;
+  scroll-snap-type: y proximity;
 }
 
 img {
@@ -314,6 +322,14 @@ p:last-child {
   .hero__logo-feature {
     max-width: 240px;
   }
+}
+
+/* Scroll Snap */
+/* Applied to index.html and about.html sections for smooth snap-to-section scrolling.
+   Uses 'proximity' mode — snaps when close to a snap point, but won't force a snap mid-section.
+   Not applied to services.html due to consecutive zero-padding service cards. */
+.snap-section {
+  scroll-snap-align: start;
 }
 
 /* Trust Bar */
