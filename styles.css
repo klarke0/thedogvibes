@@ -328,11 +328,14 @@ p:last-child {
 }
 
 /* Scroll Snap */
-/* Applied to index.html and about.html sections for smooth snap-to-section scrolling.
-   Uses 'proximity' mode — snaps when close to a snap point, but won't force a snap mid-section.
-   Not applied to services.html due to consecutive zero-padding service cards. */
+/* Applied to index.html and about.html sections for full-page snap scrolling.
+   Each section fills the full viewport height. overflow-y: auto allows internal
+   scrolling on content-heavy sections. Not applied to services.html due to
+   consecutive zero-padding service cards. */
 .snap-section {
   scroll-snap-align: start;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* Trust Bar */
