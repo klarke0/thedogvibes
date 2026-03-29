@@ -15,10 +15,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   scroll-padding-top: 96px; /* matches sticky header height */
-  height: 100%;
+}
+
+.scroll-container {
+  height: 100vh;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 600px) {
