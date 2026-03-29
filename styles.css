@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   scroll-padding-top: 96px; /* matches sticky header height */
 }
 
@@ -31,7 +32,6 @@ body {
   line-height: 1.7;
   color: #111;
   background: #fff;
-  scroll-snap-type: y proximity;
 }
 
 img {
