@@ -235,6 +235,11 @@ p:last-child {
   color: #111;
 }
 
+/* Ensure nav Book button text is white on its black background */
+.nav a.btn--primary {
+  color: #fff;
+}
+
 .nav a:hover {
   opacity: 0.7;
 }
