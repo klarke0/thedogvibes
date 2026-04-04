@@ -589,6 +589,10 @@ p:last-child {
   color: #444;
 }
 
+.section--dark .hiw-step p {
+  color: rgba(255,255,255,0.75);
+}
+
 /* Booking steps (book.html) */
 .steps {
   display: grid;
