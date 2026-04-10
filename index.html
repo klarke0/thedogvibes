@@ -244,5 +244,18 @@
     </div>
   </footer>
 
+  <script>
+    const scrollContainer = document.querySelector('.scroll-container');
+    const animateEls = document.querySelectorAll('.animate-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { root: scrollContainer, threshold: 0.1 });
+    animateEls.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
