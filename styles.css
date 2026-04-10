@@ -21,8 +21,10 @@ html {
 .scroll-container {
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 @media (max-width: 600px) {
