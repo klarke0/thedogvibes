@@ -685,6 +685,18 @@ p:last-child {
   color: rgba(255,255,255,0.75);
 }
 
+.section--dark .hiw-step__icon {
+  background: #fff;
+}
+
+.section--dark .hiw-step__icon svg {
+  stroke: #111;
+}
+
+.section--dark .hiw-step__num {
+  color: #111;
+}
+
 /* Booking steps (book.html) */
 .steps {
   display: grid;
