@@ -494,7 +494,79 @@ p:last-child {
   padding-bottom: 20px;
 }
 
-/* Testimonials */
+/* Testimonials — Auto-scrolling Carousel */
+.testimonial-carousel {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.testimonial-carousel:active {
+  cursor: grabbing;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: testimonial-scroll 36s linear infinite;
+}
+
+.testimonial-carousel:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonial-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate by exactly half (4 cards worth) so duplicates create seamless loop */
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.testimonial-card {
+  flex: 0 0 300px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+}
+
+.testimonial-card__photo {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+}
+
+.testimonial-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-card blockquote {
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+  padding: 20px 24px 12px;
+  margin: 0;
+}
+
+.testimonial-card cite {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 24px 20px;
+}
+
+/* Legacy testimonial styles (about page, etc.) */
 .testimonial {
   padding: 32px;
   border-left: 4px solid #000;
