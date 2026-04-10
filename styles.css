@@ -361,6 +361,7 @@ p:last-child {
   align-items: center;
   scroll-snap-align: start;
   overflow-y: auto;
+  width: 100%;
 }
 
 /* Trust Bar */
