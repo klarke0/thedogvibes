@@ -240,6 +240,18 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      var quotes = document.querySelectorAll('.testimonial-cycler__quote');
+      if (!quotes.length) return;
+      var current = 0;
+      setInterval(function() {
+        quotes[current].classList.remove('active');
+        current = (current + 1) % quotes.length;
+        quotes[current].classList.add('active');
+      }, 4500);
+    })();
+  </script>
   <script src="animations.js"></script>
 </body>
 </html>
