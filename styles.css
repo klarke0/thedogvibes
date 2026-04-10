@@ -894,6 +894,24 @@ p:last-child {
   margin-bottom: 6px;
 }
 
+/* Scroll animations */
+.animate-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Serif heading utility */
+.serif {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
   h1 {
