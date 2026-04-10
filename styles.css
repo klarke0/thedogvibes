@@ -1000,33 +1000,6 @@ p:last-child {
   }
 }
 
-/* Testimonial carousel — reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .testimonial-track {
-    animation: none;
-  }
-}
-
-/* Testimonial carousel — touch support */
-@media (max-width: 600px) {
-  .testimonial-card {
-    flex: 0 0 260px;
-  }
-
-  .testimonial-card__photo {
-    height: 160px;
-  }
-
-  .testimonial-card blockquote {
-    font-size: 14px;
-    padding: 16px 20px 10px;
-  }
-
-  .testimonial-card cite {
-    padding: 0 20px 16px;
-    font-size: 12px;
-  }
-}
 
 /* Animation system — blur+scale reveal */
 
