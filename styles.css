@@ -358,7 +358,7 @@ p:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   scroll-snap-align: start;
   overflow-y: auto;
   width: 100%;
