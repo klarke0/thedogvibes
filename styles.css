@@ -960,6 +960,11 @@ p:last-child {
 
   .hiw-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hiw-step {
+    padding: 0;
   }
 
   .steps {
@@ -967,11 +972,11 @@ p:last-child {
   }
 
   .section {
-    padding: 60px 0;
+    padding: 48px 24px;
   }
 
   .hero {
-    padding: 60px 0;
+    padding: 48px 0;
   }
 
   .service-card {
