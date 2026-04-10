@@ -514,76 +514,50 @@ p:last-child {
   padding-bottom: 20px;
 }
 
-/* Testimonials — Auto-scrolling Carousel */
-.testimonial-carousel {
-  overflow: hidden;
-  width: 100%;
-  cursor: grab;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.testimonial-carousel:active {
-  cursor: grabbing;
-}
-
-.testimonial-track {
+/* Testimonial cycler */
+.testimonial-cycler {
+  position: relative;
+  min-height: 160px;
   display: flex;
-  gap: 24px;
-  width: max-content;
-  animation: testimonial-scroll 36s linear infinite;
+  align-items: center;
+  justify-content: center;
 }
 
-.testimonial-carousel:hover .testimonial-track {
-  animation-play-state: paused;
+.testimonial-cycler__quote {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  opacity: 0;
+  filter: blur(8px);
+  transform: scale(0.97);
+  transition: opacity 1s ease, filter 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  text-align: center;
 }
 
-@keyframes testimonial-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Translate by exactly half (4 cards worth) so duplicates create seamless loop */
-    transform: translateX(calc(-50% - 12px));
-  }
+.testimonial-cycler__quote.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  pointer-events: auto;
+  position: relative;
 }
 
-.testimonial-card {
-  flex: 0 0 300px;
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  overflow: hidden;
-}
-
-.testimonial-card__photo {
-  width: 100%;
-  height: 190px;
-  overflow: hidden;
-}
-
-.testimonial-card__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.testimonial-card blockquote {
-  font-size: 15px;
+.testimonial-cycler__quote blockquote {
+  font-size: 18px;
   font-style: italic;
-  line-height: 1.6;
-  padding: 20px 24px 12px;
-  margin: 0;
+  line-height: 1.7;
+  color: #111;
+  margin: 0 0 16px;
+  quotes: none;
 }
 
-.testimonial-card cite {
-  display: block;
+.testimonial-cycler__quote cite {
   font-style: normal;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0 24px 20px;
+  letter-spacing: 0.05em;
+  color: #666;
 }
 
 /* Legacy testimonial styles (about page, etc.) */
