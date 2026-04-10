@@ -343,8 +343,12 @@ p:last-child {
    scrolling on content-heavy sections. Not applied to services.html due to
    consecutive zero-padding service cards. */
 .snap-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   scroll-snap-align: start;
-  height: 100vh;
   overflow-y: auto;
 }
 
