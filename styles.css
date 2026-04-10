@@ -275,6 +275,17 @@ p:last-child {
 .hero {
   padding: 100px 0;
   background: #F9F8F6;
+  justify-content: center;
+}
+
+/* When hero contains a trust-bar, switch to space layout so bar hits bottom */
+.hero.snap-section {
+  justify-content: flex-end;
+}
+
+.hero.snap-section > .container {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .hero .container {
