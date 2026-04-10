@@ -363,6 +363,8 @@ p:last-child {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
+  width: 100%;
+  margin-top: auto;
 }
 
 /* Grid layouts */
