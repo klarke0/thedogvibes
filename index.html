@@ -17,7 +17,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -50,10 +50,13 @@
   <section class="hero hero--photo snap-section">
     <div class="hero__bg" style="background-image: url('images/IMG_1532.jpg');"></div>
     <div class="hero__photo-content">
-      <img src="images/logo-inverse.png" alt="The Dog Vibes" class="hero__photo-logo">
-      <h1>Your dog is learning<br>whether you're training or not.</h1>
-      <p>Personalized, positive training for Portland dogs and the people who love them. Virtual sessions available everywhere.</p>
-      <div class="btn-group" style="justify-content: center;">
+      <img src="images/logo-inverse.png" alt="The Dog Vibes" class="hero__photo-logo animate-hero" data-delay="0">
+      <h1 class="hero__headline animate-hero" data-delay="1">
+        <span class="hero__headline-outline">Your dog is learning</span><br>
+        <span class="hero__headline-solid">whether you're training or not.</span>
+      </h1>
+      <p class="animate-hero" data-delay="2">Personalized, positive training for Portland dogs and the people who love them. Virtual sessions available everywhere.</p>
+      <div class="btn-group animate-hero" data-delay="3" style="justify-content: center;">
         <a href="book.html" class="btn btn--primary-inverted">Book a Free Consultation</a>
         <a href="#how-it-works" class="btn btn--outline-white">See How It Works</a>
       </div>
@@ -66,36 +69,74 @@
   </section>
 
   <!-- Pain Point Hook -->
-  <section class="section snap-section">
-    <div class="container narrow text-center animate-in">
-      <h2>Sound familiar?</h2>
-      <ul class="pain-list" style="margin-top: 32px; text-align: left;">
-        <li>Your dog lunges at every dog on the block. You dread every walk.</li>
-        <li>The puppy is adorable. The chaos is not.</li>
-        <li>You've watched the YouTube videos. Nothing is sticking.</li>
-        <li>You just want a dog you can take anywhere without holding your breath.</li>
-      </ul>
-      <p style="margin-top: 32px; font-size: 18px; font-weight: 600;">That's exactly who The Dog Vibes is built for.</p>
+  <section class="section section--offwhite snap-section">
+    <div class="container narrow animate-in">
+      <div class="pain-editorial">
+        <span class="pain-editorial__label">Sound familiar?</span>
+        <div class="pain-editorial__items">
+          <div class="pain-editorial__item">
+            <span class="pain-editorial__num">01</span>
+            <p>Your dog lunges at every dog on the block. You dread every walk.</p>
+          </div>
+          <div class="pain-editorial__item">
+            <span class="pain-editorial__num">02</span>
+            <p>The puppy is adorable. The chaos is not.</p>
+          </div>
+          <div class="pain-editorial__item">
+            <span class="pain-editorial__num">03</span>
+            <p>You've watched the YouTube videos. Nothing is sticking.</p>
+          </div>
+          <div class="pain-editorial__item">
+            <span class="pain-editorial__num">04</span>
+            <p>You just want a dog you can take anywhere without holding your breath.</p>
+          </div>
+        </div>
+        <p class="pain-editorial__closer">That's exactly who The Dog Vibes is built for.</p>
+      </div>
     </div>
   </section>
 
   <!-- Value Proposition -->
   <section class="section section--dark snap-section">
-    <div class="container narrow text-center animate-in">
-      <h2>Training that treats your dog like an individual.</h2>
-      <div style="margin-top: 24px; text-align: left;">
-        <p>The internet will tell you ten different things about dog training before lunch. A lot of it is noise. What actually works is understanding your specific dog — their history, their triggers, how they learn — and building from there.</p>
-        <p>That's what I do. No cookie-cutter programs, no one-size-fits-all advice. Force-free, science-backed training that's built around your dog and your life. Clear, consistent, and rooted in trust.</p>
+    <div class="container narrow animate-in">
+      <div class="value-prop">
+        <h2 class="value-prop__heading">
+          <span class="value-prop__serif">Training that treats</span><br>
+          <span class="value-prop__sans">your dog like an individual.</span>
+        </h2>
+        <div class="value-prop__body">
+          <p>The internet will tell you ten different things about dog training before lunch. A lot of it is noise. What actually works is understanding your specific dog — their history, their triggers, how they learn — and building from there.</p>
+          <p>That's what I do. No cookie-cutter programs, no one-size-fits-all advice. Force-free, science-backed training that's built around your dog and your life. Clear, consistent, and rooted in trust.</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Strip -->
+  <section class="gallery-strip snap-section">
+    <div class="gallery-strip__track">
+      <div class="gallery-strip__item"><img src="images/IMG_0068.jpg" alt="Smiling fluffy white dog portrait"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_1927.JPG" alt="Two dogs nose to nose"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_3852.jpg" alt="Rottweiler in snowy Washington Square Park"></div>
+      <div class="gallery-strip__item"><img src="images/57C4B48E-FBF9-4846-B73D-8CF0CFA8475B.JPG" alt="Golden retriever on NYC street"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_1319.JPG" alt="Pit bull on geometric rug"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_2452.jpg" alt="Pit bull with rawhide bone"></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="gallery-strip__item"><img src="images/IMG_0068.jpg" alt="Smiling fluffy white dog portrait"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_1927.JPG" alt="Two dogs nose to nose"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_3852.jpg" alt="Rottweiler in snowy Washington Square Park"></div>
+      <div class="gallery-strip__item"><img src="images/57C4B48E-FBF9-4846-B73D-8CF0CFA8475B.JPG" alt="Golden retriever on NYC street"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_1319.JPG" alt="Pit bull on geometric rug"></div>
+      <div class="gallery-strip__item"><img src="images/IMG_2452.jpg" alt="Pit bull with rawhide bone"></div>
     </div>
   </section>
 
   <!-- How It Works -->
   <section class="section snap-section" id="how-it-works">
-    <div class="container text-center animate-in">
-      <h2>From overwhelmed to confident. Here's the path.</h2>
+    <div class="container text-center">
+      <h2 class="animate-in">From overwhelmed to confident. Here's the path.</h2>
       <div class="hiw-grid" style="margin-top: 56px;">
-        <div class="hiw-step">
+        <div class="hiw-step animate-in stagger-1">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" /></svg>
             <span class="hiw-step__num">Step 1</span>
@@ -103,7 +144,7 @@
           <h3>Tell me about your dog</h3>
           <p>Fill out a short intake form. I want to know your dog's background, what you're dealing with, and what success looks like for you. Before we ever meet.</p>
         </div>
-        <div class="hiw-step">
+        <div class="hiw-step animate-in stagger-2">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5" /><rect x="2" y="6" width="14" height="12" rx="2" /></svg>
             <span class="hiw-step__num">Step 2</span>
@@ -111,7 +152,7 @@
           <h3>We connect on a call</h3>
           <p>A 30-minute video consultation where we go deeper. I'll ask the right questions, listen to everything, and give you an honest picture of what training will involve.</p>
         </div>
-        <div class="hiw-step">
+        <div class="hiw-step animate-in stagger-3">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="m9 15 2 2 4-4" /></svg>
             <span class="hiw-step__num">Step 3</span>
@@ -119,7 +160,7 @@
           <h3>You get a plan built for your dog</h3>
           <p>Not a template. A real, personalized training plan written specifically for your dog's behavior, learning style, and your daily life.</p>
         </div>
-        <div class="hiw-step">
+        <div class="hiw-step animate-in stagger-4">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>
             <span class="hiw-step__num">Step 4</span>
@@ -128,30 +169,32 @@
           <p>We work it together: check-ins, adjustments, and direct access to me when things come up. Because they always do.</p>
         </div>
       </div>
-      <div style="margin-top: 48px;">
+      <div class="animate-in" style="margin-top: 48px;">
         <a href="book.html" class="btn btn--primary">Book Your Free Consultation</a>
       </div>
     </div>
   </section>
 
-  <!-- Why Dog Vibes -->
-  <section class="section section--dark snap-section">
-    <div class="container text-center animate-in">
-      <h2>Why owners choose The Dog Vibes.</h2>
-      <div class="grid-4" style="margin-top: 48px; text-align: left;">
-        <div>
+  <!-- Why Dog Vibes — Full-bleed photo section -->
+  <section class="why-section snap-section">
+    <div class="why-section__bg" style="background-image: url('images/IMG_2796.jpg');"></div>
+    <div class="why-section__overlay"></div>
+    <div class="why-section__content">
+      <h2 class="animate-in">Why owners choose The Dog Vibes.</h2>
+      <div class="why-grid animate-in">
+        <div class="why-grid__item">
           <h3>10 years. Hundreds of dogs.</h3>
           <p>I spent a decade walking dogs across New York City. Every breed, every temperament, every behavioral challenge imaginable. That hands-on experience shapes everything I do.</p>
         </div>
-        <div>
+        <div class="why-grid__item">
           <h3>We look at the whole dog.</h3>
           <p>Behavior doesn't exist in a vacuum. Environment, routine, anxiety, history. All of it factors in. I design plans around your dog's full picture, not just the symptom you're trying to fix.</p>
         </div>
-        <div>
+        <div class="why-grid__item">
           <h3>Force-free, always.</h3>
           <p>Classical conditioning and positive reinforcement. The research backs it up and the results back it up. No punishment, no aversives, no shortcuts that erode trust.</p>
         </div>
-        <div>
+        <div class="why-grid__item">
           <h3>Expert support, anywhere.</h3>
           <p>The Dog Vibes is a fully digital practice. Video sessions, written plans, direct follow-up access. Your dog's progress doesn't wait for geography.</p>
         </div>
@@ -168,26 +211,28 @@
     </div>
   </section>
 
-  <!-- Social Proof -->
+  <!-- Social Proof — Horizontal Carousel -->
   <section class="section snap-section">
-    <div class="container narrow animate-in">
+    <div class="container animate-in">
       <h2 class="text-center">What clients say.</h2>
-      <div style="margin-top: 40px;">
-        <div class="testimonial">
-          <blockquote>"Working with Kevin has been nothing short of transformative for both me and my dog, Pilot. Pilot has always been a bit particular, making it challenging to find a trainer who truly understood him. But from the moment they met, Pilot was absolutely taken with Kevin. We've seen remarkable improvements in his behavior, and our bond has never been stronger."</blockquote>
-          <cite>— Mardy & Pilot</cite>
-        </div>
-        <div class="testimonial">
-          <blockquote>"Kevin helped walk, train, and raise our Lola from 6 weeks old to 6 years old. He's like family. Highly recommend."</blockquote>
-          <cite>— Shawn, Ellie & Layla</cite>
-        </div>
-        <div class="testimonial">
-          <blockquote>"He worked with us to solve the constant barking, improved his confidence, and gave us invaluable advice."</blockquote>
-          <cite>— Claudia & Cole</cite>
-        </div>
-        <div class="testimonial">
-          <blockquote>"Lumi was such a chaos diva as a puppy. Kevin showed me the way — now she's a well behaved princess."</blockquote>
-          <cite>— Rachel & Lumi</cite>
+      <div class="testimonial-carousel" style="margin-top: 48px;">
+        <div class="testimonial-carousel__track">
+          <div class="testimonial-card">
+            <blockquote>"Working with Kevin has been nothing short of transformative for both me and my dog, Pilot. Pilot has always been a bit particular, making it challenging to find a trainer who truly understood him. But from the moment they met, Pilot was absolutely taken with Kevin. We've seen remarkable improvements in his behavior, and our bond has never been stronger."</blockquote>
+            <cite>— Mardy & Pilot</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"Kevin helped walk, train, and raise our Lola from 6 weeks old to 6 years old. He's like family. Highly recommend."</blockquote>
+            <cite>— Shawn, Ellie & Layla</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"He worked with us to solve the constant barking, improved his confidence, and gave us invaluable advice."</blockquote>
+            <cite>— Claudia & Cole</cite>
+          </div>
+          <div class="testimonial-card">
+            <blockquote>"Lumi was such a chaos diva as a puppy. Kevin showed me the way — now she's a well behaved princess."</blockquote>
+            <cite>— Rachel & Lumi</cite>
+          </div>
         </div>
       </div>
       <div class="text-center" style="margin-top: 40px; padding-bottom: 48px;">
@@ -199,7 +244,10 @@
   <!-- Final CTA -->
   <section class="section section--dark snap-section">
     <div class="container narrow text-center animate-in">
-      <h2>The first step is just a conversation.</h2>
+      <h2 class="cta-heading">
+        <span class="cta-heading__serif">The first step is just</span><br>
+        <span class="cta-heading__outline">a conversation.</span>
+      </h2>
       <p style="margin-top: 24px;">Tell me about your dog. I'll tell you what I think is going on and how I can help. No pressure, no commitment. Just an honest conversation with someone who genuinely loves dogs.</p>
       <div style="margin-top: 32px;">
         <a href="book.html" class="btn btn--primary-inverted">Book Your Free Consultation</a>
@@ -245,6 +293,7 @@
   </footer>
 
   <script>
+    /* Scroll-triggered animations */
     const scrollContainer = document.querySelector('.scroll-container');
     const animateEls = document.querySelectorAll('.animate-in');
     const observer = new IntersectionObserver((entries) => {
@@ -255,6 +304,48 @@
       });
     }, { root: scrollContainer, threshold: 0.1 });
     animateEls.forEach(el => observer.observe(el));
+
+    /* Hero staggered entrance */
+    window.addEventListener('DOMContentLoaded', () => {
+      const heroEls = document.querySelectorAll('.animate-hero');
+      heroEls.forEach((el, i) => {
+        const delay = parseInt(el.dataset.delay) || 0;
+        setTimeout(() => {
+          el.classList.add('hero-visible');
+        }, 300 + delay * 200);
+      });
+    });
+
+    /* Testimonial horizontal scroll with drag */
+    const carousel = document.querySelector('.testimonial-carousel');
+    const track = document.querySelector('.testimonial-carousel__track');
+    if (carousel && track) {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        carousel.classList.add('is-dragging');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+      carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        carousel.classList.remove('is-dragging');
+      });
+      carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        carousel.classList.remove('is-dragging');
+      });
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+    }
   </script>
 
 </body>
