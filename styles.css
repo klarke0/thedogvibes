@@ -789,6 +789,87 @@ p:last-child {
   margin-left: 16px;
 }
 
+/* Blog post pages */
+.post-back {
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.post-back a {
+  color: #555;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.2s;
+}
+
+.post-back a:hover {
+  color: #111;
+}
+
+.post-meta {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.post-body {
+  margin-top: 8px;
+}
+
+.post-body h2 {
+  font-size: 22px;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+.post-body h3 {
+  font-size: 18px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.post-body p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.post-body ul {
+  margin: 0 0 20px 0;
+  padding-left: 24px;
+}
+
+.post-body ul li {
+  margin-bottom: 12px;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+.post-body ol {
+  margin: 0 0 20px 0;
+  padding-left: 24px;
+}
+
+.post-body ol li {
+  margin-bottom: 12px;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+.post-body hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 40px 0;
+}
+
 /* Legal pages */
 .legal {
   padding: 80px 0;
