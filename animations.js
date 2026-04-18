@@ -67,7 +67,13 @@
     });
 
     targets.forEach(function (el) {
-      observer.observe(el);
+      // Immediately reveal elements already in the viewport on load
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
     });
 
     // Safety net: reveal any element that remains hidden after 2.5s
