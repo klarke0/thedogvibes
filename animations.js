@@ -47,6 +47,16 @@
     return targets;
   }
 
+  /* ── Check if element is in viewport ─────────────────── */
+  function isInViewport(el, scrollContainer) {
+    var rect = el.getBoundingClientRect();
+    if (scrollContainer) {
+      var containerRect = scrollContainer.getBoundingClientRect();
+      return rect.top < containerRect.bottom && rect.bottom > containerRect.top;
+    }
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  }
+
   /* ── Scroll reveals via IntersectionObserver ─────────── */
   function initScrollReveals() {
     var targets = collectTargets();
@@ -67,19 +77,23 @@
     });
 
     targets.forEach(function (el) {
-      observer.observe(el);
+      // Immediately reveal elements already in viewport on load
+      if (isInViewport(el, scrollContainer)) {
+        el.classList.add('is-visible');
+      } else {
+        observer.observe(el);
+      }
     });
 
-    // Safety net: reveal any element that remains hidden after 2.5s
-    // Catches elements that are in-viewport on load but miss the initial IntersectionObserver firing,
-    // and elements on short pages that never scroll into view.
+    // Safety net: reveal anything still hidden after 1.2s
+    // Handles short pages where items never scroll into view
     setTimeout(function () {
       targets.forEach(function (el) {
         if (!el.classList.contains('is-visible')) {
           el.classList.add('is-visible');
         }
       });
-    }, 2500);
+    }, 1200);
   }
 
   /* ── Init ─────────────────────────────────────────────── */
