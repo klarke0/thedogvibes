@@ -63,12 +63,22 @@
       });
     }, {
       root: scrollContainer || null,
-      threshold: 0.15
+      threshold: 0.05
     });
 
     targets.forEach(function (el) {
       observer.observe(el);
     });
+
+    // Safety net: reveal any element that remains hidden after 2.5s
+    // (catches elements below fold that never intersect on short pages)
+    setTimeout(function () {
+      targets.forEach(function (el) {
+        if (!el.classList.contains('is-visible')) {
+          el.classList.add('is-visible');
+        }
+      });
+    }, 2500);
   }
 
   /* ── Init ─────────────────────────────────────────────── */
