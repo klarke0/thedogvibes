@@ -820,6 +820,14 @@ p:last-child {
   font-weight: 600;
 }
 
+.post-lede {
+  font-size: 20px;
+  color: #555;
+  margin-top: 16px;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
 .post-body {
   margin-top: 8px;
 }
