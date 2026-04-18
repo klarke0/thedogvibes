@@ -1014,6 +1014,12 @@ p:last-child {
   pointer-events: none;
 }
 
+@media (max-width: 600px) {
+  .scroll-hint {
+    display: none;
+  }
+}
+
 .scroll-hint__label {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
