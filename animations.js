@@ -67,17 +67,12 @@
     });
 
     targets.forEach(function (el) {
-      // Immediately reveal elements already in the viewport on load
-      var rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.classList.add('is-visible');
-      } else {
-        observer.observe(el);
-      }
+      observer.observe(el);
     });
 
     // Safety net: reveal any element that remains hidden after 2.5s
-    // (catches elements below fold that never intersect on short pages)
+    // Catches elements that are in-viewport on load but miss the initial IntersectionObserver firing,
+    // and elements on short pages that never scroll into view.
     setTimeout(function () {
       targets.forEach(function (el) {
         if (!el.classList.contains('is-visible')) {
