@@ -1585,3 +1585,86 @@ p:last-child {
   color: var(--muted);
   margin-top: 6px;
 }
+
+/* ============ v3 service sections ============ */
+.v3-service {
+  border-top: 1px dashed var(--ink);
+  padding: var(--space-md) 0;
+}
+.v3-service:first-of-type { border-top: none; }
+.v3-service h2 { font-family: var(--font-display); margin: 0 0 8px; }
+
+/* ============ v3 article body ============ */
+.v3-article p { font-family: var(--font-body); font-size: 17px; line-height: 1.7; }
+.v3-article h2, .v3-article h3 { font-family: var(--font-display); }
+.v3-article p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.2em;
+  float: left;
+  line-height: 0.9;
+  margin: 4px 8px 0 0;
+  font-weight: 900;
+}
+.v3-article hr {
+  border: 0;
+  height: 6px;
+  margin: var(--space-md) 0;
+  background-image: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 12px);
+  background-size: 12px 6px;
+}
+.v3-article .post-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-sm);
+}
+.v3-article .post-back a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-decoration: underline;
+}
+.v3-blog-entry {
+  border-top: 1px dashed var(--ink);
+  padding: var(--space-md) 0;
+}
+.v3-blog-entry:first-of-type { border-top: none; }
+.v3-blog-entry .cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.v3-blog-entry h2 {
+  font-family: var(--font-display);
+  margin: 4px 0 8px;
+}
+.v3-blog-entry h2 a { text-decoration: none; color: var(--ink); }
+.v3-blog-entry h2 a:hover { color: var(--accent); }
+
+/* ============ v3 FAQ ============ */
+.v3-faq details {
+  border-top: 1px dashed var(--ink);
+  padding: var(--space-sm) 0;
+}
+.v3-faq details:last-of-type { border-bottom: 1px dashed var(--ink); }
+.v3-faq summary {
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  padding: var(--space-xs) 0;
+  list-style: none;
+}
+.v3-faq summary::-webkit-details-marker { display: none; }
+.v3-faq summary::before { content: "▸ "; color: var(--accent); }
+.v3-faq details[open] summary::before { content: "▾ "; }
+.v3-faq details p { margin: var(--space-sm) 0 var(--space-sm) var(--space-md); }
+
+/* ============ v3 legal pages ============ */
+.v3-legal { max-width: 720px; margin: 0 auto; padding: 0 var(--space-lg); }
+.v3-legal h2, .v3-legal h3 { font-family: var(--font-display); }
+.v3-legal table { width: 100%; border-collapse: collapse; margin: var(--space-md) 0; font-size: 14px; }
+.v3-legal th, .v3-legal td { border: 1px solid var(--ink); padding: 6px 8px; text-align: left; vertical-align: top; }
+.v3-legal th { background: rgba(43,37,32,0.06); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
