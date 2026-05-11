@@ -1,4 +1,63 @@
-/* The Dog Vibes — Global Styles */
+/* ===========================================================
+   Dog Vibes v3 — Retro/Indieweb Design Tokens
+   ----------------------------------------------------------- */
+:root {
+  /* Palette */
+  --paper: #f3ede0;
+  --ink: #2b2520;
+  --accent: #8b3a1a;   /* warm rust links */
+  --muted: #6b5d4f;
+  --ink-soft: rgba(43, 37, 32, 0.85);
+
+  /* Fonts */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: Georgia, "Times New Roman", serif;
+  --font-mono: "Courier New", ui-monospace, Menlo, monospace;
+
+  /* Sizing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --measure: 64ch;
+
+  /* Motion */
+  --t-fast: 150ms;
+  --t-base: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  background-image:
+    radial-gradient(rgba(43,37,32,0.05) 1px, transparent 1px),
+    radial-gradient(rgba(43,37,32,0.04) 1px, transparent 1px);
+  background-size: 5px 5px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  line-height: 1.65;
+  font-size: 17px;
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+/* === END v3 tokens === */
+
+/* The Dog Vibes — Global Styles (legacy below) */
 /* Colors: #111 (near-black), #FFF, #F9F8F6 (warm off-white) */
 /* Fonts: Montserrat (headings, UI), Source Sans Pro (body) */
 
