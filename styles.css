@@ -1556,3 +1556,32 @@ p:last-child {
   background: var(--paper); border: 2px solid var(--ink); padding: 12px;
   margin-top: 8px;
 }
+
+/* ============ Guestbook ============ */
+.v3-guestbook { max-width: 700px; margin: 0 auto; padding: 0 var(--space-lg); }
+.v3-gb-form input, .v3-gb-form textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 8px 10px;
+  border: 1px solid var(--ink);
+  background: rgba(255,255,255,0.6);
+}
+.v3-gb-honey { position: absolute; left: -10000px; }
+.v3-gb-entry {
+  background: #fff;
+  padding: 10px 12px;
+  margin: 12px 0;
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.12);
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-left: 4px solid var(--accent);
+}
+.v3-gb-entry .meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
