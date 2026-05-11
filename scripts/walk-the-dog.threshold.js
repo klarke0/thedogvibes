@@ -10,6 +10,6 @@ export const ZONE = Object.freeze({
 export function evaluateMark(distance) {
   const d = Math.max(0, Math.min(1, distance));
   if (d > 0.7) return ZONE.UNAWARE;
-  if (d >= 0.3) return ZONE.AWARE;
+  if (d > 0.3) return ZONE.AWARE;
   return ZONE.OVER;
 }
