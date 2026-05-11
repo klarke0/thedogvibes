@@ -79,20 +79,9 @@ export function start(root) {
     ctx.strokeStyle = '#2b2520'; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(0, h - 24); ctx.lineTo(w, h - 24); ctx.stroke();
 
-    // Handler (kevin) — rect block left of dog
-    ctx.fillStyle = '#2b2520';
-    ctx.fillRect(30, h - 60, 14, 36);
-
-    // Dog — simple rect sprite
-    ctx.fillRect(60, h - 44, 28, 20);  // body
-    ctx.fillRect(82, h - 50, 14, 14);  // head
-    ctx.fillRect(60, h - 24, 4, 6);    // back leg
-    ctx.fillRect(82, h - 24, 4, 6);    // front leg
-
-    // Distraction sprite
-    const dx = 60 + (w - 100) * state.distraction.distance;
-    ctx.fillStyle = '#8b3a1a';
-    ctx.fillRect(dx, h - 38, 14, 14);
+    drawHandler(28, h);
+    drawDog(58, h);
+    drawDistraction(state.distraction, w, h);
 
     // Threshold meter (top)
     const meterY = 8, meterH = 8;
