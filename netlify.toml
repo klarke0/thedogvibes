@@ -1,0 +1,6 @@
+[build]
+  publish = "."
+
+[forms]
+  # Netlify auto-detects forms; this block is documentation.
+  # The "guestbook" form is defined in guestbook.html.
