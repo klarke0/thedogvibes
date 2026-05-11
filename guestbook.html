@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Guestbook — The Dog Vibes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="v3-skip" href="#main">Skip to content</a>
+  <div class="v3-ribbon">★ Vol. II · Issue IV · Portland, OR · April 2026 ★</div>
+  <nav class="v3-nav" aria-label="Primary">
+    [ <a href="index.html">home</a> · <a href="about.html">about</a> · <a href="services.html">services</a> · <a href="blog.html">blog</a> · <a href="guestbook.html">guestbook</a> · <a href="book.html">book</a> ]
+  </nav>
+
+  <header class="v3-masthead-row">
+    <h1 class="v3-wordmark" style="font-size:clamp(40px, 6vw, 64px)">Guestbook</h1>
+  </header>
+  <p class="v3-sub-mast">say hi. tell me about your dog. no account required.</p>
+  <div class="v3-divider"></div>
+
+  <main id="main" class="v3-guestbook">
+    <form name="guestbook" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="v3-gb-form">
+      <input type="hidden" name="form-name" value="guestbook">
+      <p class="v3-gb-honey"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <p><label>Name (or a fake one)<br><input name="name" required maxlength="60"></label></p>
+      <p><label>Message<br><textarea name="message" required maxlength="500" rows="4"></textarea></label></p>
+      <p><button type="submit" class="v3-stamp">sign it ►</button></p>
+    </form>
+
+    <h2 style="font-family:var(--font-display); margin-top:var(--space-xl)">Recent</h2>
+    <div id="gb-entries">Loading…</div>
+  </main>
+
+  <footer class="v3-footer">
+    printed on the internet · est. 2014 · ★ ☆ ★ · contact: <a href="mailto:kevin@thedogvibes.com">kevin@thedogvibes.com</a>
+  </footer>
+
+  <script type="module" src="scripts/guestbook-render.js" data-mode="page"></script>
+</body>
+</html>
