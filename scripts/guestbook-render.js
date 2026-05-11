@@ -2,7 +2,9 @@
 // Supports two modes via data-mode on the script tag:
 //   "home" — show only the count, populate #guestbook-count
 //   "page" — render full list into #gb-entries (default if data-mode missing)
-const mode = (document.currentScript && document.currentScript.dataset.mode) || 'page';
+// In ES modules, document.currentScript is null. Locate our script tag by src.
+const scriptEl = document.querySelector('script[src*="guestbook-render.js"]');
+const mode = (scriptEl && scriptEl.dataset.mode) || 'page';
 
 try {
   const res = await fetch('data/guestbook-entries.json', { cache: 'no-store' });
