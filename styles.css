@@ -1505,3 +1505,17 @@ p:last-child {
   padding: 8px 12px;
   z-index: 100;
 }
+
+/* ============ Home layout ============ */
+.v3-home { padding: 0 var(--space-lg); max-width: 1100px; margin: 0 auto; }
+.v3-home-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .v3-home-row { grid-template-columns: 1fr; }
+}
+.v3-polaroid-strip { margin: var(--space-md) 0; }
+.v3-home-widgets { display: flex; flex-direction: column; }
