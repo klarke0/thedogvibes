@@ -259,7 +259,7 @@ a:focus-visible, button:focus-visible {
   gap: var(--space-xl);
   align-items: start;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .v3-home-row { grid-template-columns: 1fr; }
 }
 .v3-polaroid-strip { margin: var(--space-md) 0; }
@@ -427,3 +427,62 @@ a:focus-visible, button:focus-visible {
   .v3-ribbon { font-size: 10px; padding: 6px 10px; letter-spacing: 1px; }
   .v3-stamp-meta { display: block; margin: var(--space-sm) 0 0; }
 }
+
+
+/* ============ Page utilities (shared non-home layout) ============ */
+.v3-page { max-width: 720px; margin: 0 auto; padding: 0 var(--space-lg); }
+.v3-page--wide { max-width: 780px; }
+.v3-page-title { font-size: clamp(40px, 6vw, 68px); }
+.v3-page h2, .v3-page h3 { font-family: var(--font-display); }
+
+/* ============ Testimonial clippings ============ */
+.v3-clippings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+  align-items: flex-start;
+}
+.v3-clipping {
+  background: #fff;
+  border: 1px dashed var(--ink);
+  box-shadow: 3px 3px 0 rgba(43, 37, 32, 0.15);
+  padding: var(--space-md) var(--space-lg);
+  max-width: 300px;
+  font-style: italic;
+  transform: rotate(-0.8deg);
+}
+.v3-clipping:nth-child(even) { transform: rotate(0.9deg); }
+.v3-clipping:only-child { margin-inline: auto; }
+.v3-clipping .who {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ============ Polaroid variants ============ */
+.v3-polaroid--lg img { width: 240px; height: 200px; }
+.v3-float-r { float: right; margin: 0 0 var(--space-md) var(--space-lg); }
+.v3-float-l { float: left; margin: 0 var(--space-lg) var(--space-md) 0; }
+@media (max-width: 600px) {
+  .v3-float-r, .v3-float-l { float: none; margin: var(--space-md) auto; display: table; }
+}
+
+/* ============ Mid-viewport sweep (481-800px) ============ */
+@media (max-width: 800px) {
+  .v3-wordmark { font-size: clamp(44px, 9vw, 60px); }
+  .v3-page-title { font-size: clamp(36px, 8vw, 52px); }
+  .v3-masthead-row { padding-top: var(--space-md); }
+  .v3-polaroid-strip { display: flex; flex-wrap: wrap; justify-content: center; }
+  .v3-stamp-meta { display: block; margin-top: var(--space-xs); }
+}
+
+/* ============ Widget mounts (anti-flash) ============ */
+#treat-jar-mount { min-height: 170px; }
+#tip-mount { min-height: 48px; }
+#reading-mount { min-height: 48px; }

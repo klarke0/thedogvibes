@@ -4,3 +4,15 @@
 [forms]
   # Netlify auto-detects forms; this block is documentation.
   # The "guestbook" form is defined in guestbook.html.
+
+[[redirects]]
+  from = "/treat-jar.test.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/walk-the-dog.test.html"
+  to = "/404.html"
+  status = 404
+  force = true
