@@ -1,6 +1,6 @@
 # Google Analytics 4 — Setup Guide
 
-GA4 tracking code has been added to all 7 pages of thedogvibes.com. You just need to create your GA4 property and drop in your Measurement ID.
+GA4 tracking code has been added to all 7 pages of thedogvibes.com. Property exists; Measurement ID G-K26LZ4ZPDF is live on all pages as of 2026-07-14.
 
 ---
 
@@ -31,7 +31,7 @@ Copy it.
 
 Open each of the 7 HTML files listed below and do a find-and-replace:
 
-- Find: `G-XXXXXXXXXX`
+- Find: `G-K26LZ4ZPDF`
 - Replace with: your actual Measurement ID (e.g. `G-ABC123XYZ`)
 
 **Files to update** (all in `/CTO - Web Developer/Site/`):
@@ -43,11 +43,11 @@ Open each of the 7 HTML files listed below and do a find-and-replace:
 - `privacy.html`
 - `terms.html`
 
-Each file has two instances of `G-XXXXXXXXXX` — replace both.
+Each file has two instances of `G-K26LZ4ZPDF` — replace both.
 
 If you use VS Code, you can do a global find-and-replace across all files at once:
 - Mac: `Cmd + Shift + H`
-- Search: `G-XXXXXXXXXX`
+- Search: `G-K26LZ4ZPDF`
 - Replace: your real ID
 - Click **Replace All**
 
