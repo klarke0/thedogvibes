@@ -66,7 +66,7 @@ This site is a git repo with a `netlify.toml` already configured (`publish = "."
 - Test all navigation links and CTA buttons
 - Confirm the guestbook form submits and shows up under Netlify > Forms (it's auto-detected via `data-netlify="true"` in `guestbook.html`)
 - The Book page's Tally embed is live and working. No placeholder to swap
-- Replace the GA4 placeholder (`G-XXXXXXXXXX`) with the real Google Analytics ID when Kevin provides one
+- No Google Analytics is wired up yet. Add GA4 tracking when Kevin is ready
 
 ---
 
