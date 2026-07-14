@@ -265,8 +265,8 @@ a:focus-visible, button:focus-visible {
 .v3-polaroid-strip { margin: var(--space-md) 0; }
 .v3-home-widgets { display: flex; flex-direction: column; }
 
-/* ============ Walk-the-Dog game ============ */
-#walk-the-dog-mount canvas {
+/* ============ Treat Jar ============ */
+#treat-jar-mount canvas {
   display: block;
   width: 100%;
   max-width: 380px;
@@ -275,7 +275,7 @@ a:focus-visible, button:focus-visible {
   border: 1px solid var(--ink);
   image-rendering: pixelated;
 }
-.wtd-hud {
+.tj-hud {
   display: flex;
   gap: var(--space-sm);
   align-items: center;
@@ -284,7 +284,7 @@ a:focus-visible, button:focus-visible {
   font-size: 11px;
   flex-wrap: wrap;
 }
-.wtd-hud button {
+.tj-hud button {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 1px;
@@ -294,13 +294,10 @@ a:focus-visible, button:focus-visible {
   background: var(--paper);
   cursor: pointer;
 }
-.wtd-hud button:hover { background: var(--ink); color: var(--paper); }
-.wtd-help { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin: 6px 0 0; }
-.wtd-win {
-  font-family: var(--font-body); font-style: italic;
-  background: var(--paper); border: 2px solid var(--ink); padding: 12px;
-  margin-top: 8px;
-}
+.tj-hud button:hover { background: var(--ink); color: var(--paper); }
+.tj-caption { font-family: var(--font-body); font-style: italic; font-size: 13px; margin: 6px 0 0; min-height: 1.2em; }
+.tj-counter { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.tj-help { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin: 6px 0 0; }
 
 /* ============ Guestbook ============ */
 .v3-guestbook { max-width: 700px; margin: 0 auto; padding: 0 var(--space-lg); }
