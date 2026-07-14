@@ -14,7 +14,7 @@ A sidebar widget on `index.html`: a pixel dog and a treat jar. Click the jar, a 
 ## Scope
 
 ### index.html
-- Widget `#widget-game` keeps its slot and mount div (id stays `walk-the-dog-mount` → renamed `treat-jar-mount`).
+- Widget `#widget-game` keeps its slot; mount div id renamed `walk-the-dog-mount` → `treat-jar-mount`.
 - Title: `the treat jar`. Help line: `click the jar. that's it. that's the game.`
 - Static "book a free consult ►" stamp remains below the widget as plain copy (no win modal anywhere).
 
