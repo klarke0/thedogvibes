@@ -1,215 +1,41 @@
-# Design System Master File
+# Dog Vibes v3 Design System — "Zine"
 
-> **NOTE:** Adapted 2026-05-10 from ui-ux-pro-max auto-gen. Font swap rejected (keeping existing). Gold CTA adopted as the single accent.
+Accurate as of 2026-07-14. This replaces the v2 "Exaggerated Minimalism" doc, which described a design that never shipped. The live site is deliberately playful; nothing in here forbids that.
 
-> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
-> If that file exists, its rules **override** this Master file.
-> If not, strictly follow the rules below.
+## Direction
+Zine + pixel-cafe retro. Warm newsprint, cream paper, ink stamps, polaroids, pixel-art widgets. Voice: dry, cutesy, funny, warm. Lowercase in nav/captions/microcopy; sentence case in body. No em dashes anywhere (use periods, commas, or "·").
 
----
+## Tokens (source of truth: styles.css `:root`)
+- `--paper: #f3ede0` cream background
+- `--ink: #2b2520` near-black text/borders
+- `--accent: #8b3a1a` warm rust (links, treats, stamps)
+- `--muted: #6b5d4f` captions, metas
+- Fonts: `--font-display` Fraunces (headings/wordmark), `--font-body` Georgia, `--font-mono` Courier New (metas, captions, HUDs, labels)
+- Spacing scale: `--space-xs` 4 → `--space-2xl` 48
 
-**Project:** Dog Vibes
-**Generated:** 2026-05-10 19:18:46
-**Category:** B2B Service
+## Components (all in styles.css)
+- `.v3-ribbon` — masthead ribbon ("★ Vol. II · Issue IV · Portland, OR ★")
+- `.v3-nav` — bracketed lowercase nav; canonical order: home · about · services · faq · blog · guestbook · book
+- `.v3-wordmark` + `.v3-page-title` — Fraunces display; page titles use the utility class, not inline clamps
+- `.v3-page` / `.v3-page--wide` — standard content wrappers (720px / 780px)
+- `.v3-divider` — pixel divider
+- `.v3-stamp` + `.v3-stamp-meta` — postage-stamp CTA button and its mono meta line
+- `.v3-polaroid` (+ `.tilt-l/.tilt-r`, `--lg`, `.v3-float-r/.v3-float-l`) — photo frames with italic captions; floats unfloat below 600px
+- `.v3-clippings` / `.v3-clipping` — testimonial cards (dashed border, slight rotation, `.who` mono byline); degrades from 1 to 3 quotes
+- `.v3-widget` — homepage sidebar boxes (treat jar, tip of the day, now reading, guestbook count)
+- `.v3-faq` — `<details>`-based Q&A with ▸/▾ markers
+- `.v3-legal` — terms/privacy layout with bordered tables
+- Treat jar: scripts/treat-jar*.js, canvas pixel toy, localStorage counter, reduced-motion fallback
 
----
+## Page shell (every page)
+Skip link → ribbon → nav → masthead (`v3-wordmark v3-page-title`) → sub-mast → divider → `main.v3-page` → footer (`.v3-footer` with contact line + faq/guestbook/terms/privacy links). Head: favicon.png + apple-touch-icon.png, canonical, OG tags, GA4 (G-K26LZ4ZPDF, anonymize_ip).
 
-## Global Rules
+## Content facts (canonical)
+- Hybrid: in-home across the Portland metro (primary) + remote video coaching anywhere (same prices)
+- "free consult" (first mention: "free 30-minute consult"), video call, no contracts
+- $125 Standard (75 min) / $175 Premium (90 min)
+- Booking flow: Tally intake on book.html → Kevin emails Calendly link → Meet consult
+- Evenings/weekends are the normal session times
 
-### Color Palette
-
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#171717` | `--color-primary` |
-| Secondary | `#404040` | `--color-secondary` |
-| CTA/Accent | `#D4AF37` | `--color-cta` |
-| Background | `#FFFFFF` | `--color-background` |
-| Text | `#171717` | `--color-text` |
-
-**Color Notes:** Minimal black + accent gold. Gold (`#D4AF37`) is reserved exclusively for primary CTA buttons — never used for body text, borders, headlines, or decorative elements.
-
-### Typography
-
-- **Heading Font (Display / Editorial):** Instrument Serif
-- **Secondary Heading Font (UI / Eyebrows / Labels):** Montserrat
-- **Body Font:** Source Sans Pro
-- **Mood:** calm, wellness, trustworthy, editorial, human
-
-**Usage:**
-- `h1`, large feature headlines → Instrument Serif (regular weight, generous size)
-- `h2`, `h3`, eyebrows, button labels, nav, micro-UI → Montserrat (600/700)
-- Paragraphs, form labels, descriptive copy → Source Sans Pro (400/600)
-
-**Google Fonts:** [Instrument Serif + Montserrat + Source Sans Pro](https://fonts.google.com/share?selection.family=Instrument+Serif:ital@0;1|Montserrat:wght@600;700|Source+Sans+3:wght@400;600)
-
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap');
-```
-
-### Spacing Variables
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
-
-### Shadow Depths
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
-
----
-
-## Component Specs
-
-### Buttons
-
-```css
-/* Primary Button — gold, reserved for the single most important action on a page */
-.btn-primary {
-  background: #D4AF37;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button — outlined black, for supporting actions */
-.btn-secondary {
-  background: transparent;
-  color: #171717;
-  border: 2px solid #171717;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-```
-
-### Cards
-
-```css
-.card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #171717;
-  outline: none;
-  box-shadow: 0 0 0 3px #17171720;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
-
----
-
-## Style Guidelines
-
-**Style:** Exaggerated Minimalism
-
-**Keywords:** Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design
-
-**Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
-
-**Key Effects:** font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace
-
-### Page Pattern
-
-**Pattern Name:** Minimal Single Column
-
-- **Conversion Strategy:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
-- **CTA Placement:** Center, large gold CTA button
-- **Section Order:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Playful design
-- ❌ Hidden credentials
-- ❌ AI purple/pink gradients
-- ❌ Gold used outside the primary CTA (no gold text, gold borders, gold dividers, gold icons)
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
-
----
-
-## Pre-Delivery Checklist
-
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
-- [ ] Gold (`#D4AF37`) appears ONLY on primary CTA buttons
+## Accessibility invariants
+Skip link on every page; `prefers-reduced-motion` disables all animation (treat jar shows sleeping dog); aria-live for dynamic captions; alt text on all photos; focus-visible styles.
