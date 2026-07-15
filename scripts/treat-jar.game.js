@@ -6,6 +6,8 @@ import { pickTrick, pickCaption, pickIdleLine } from './treat-jar.tricks.js';
 const INK = '#2b2520';
 const ACCENT = '#8b3a1a';
 const PAPER = '#fff';
+const SKY = '#f1e9d7';
+const DIRT = '#e8ddc6';
 const FAINT = 'rgba(43, 37, 32, 0.16)';
 const SOFT = 'rgba(43, 37, 32, 0.34)';
 const TREAT_MS = 400;
@@ -109,7 +111,8 @@ export function start(root, { storageKey }) {
 
   function draw(now) {
     const w = canvas.width, h = canvas.height;
-    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = SKY; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = DIRT; ctx.fillRect(0, h - 22, w, 22);
 
     drawBackground(ctx, w, h, now);
 
@@ -383,7 +386,8 @@ function drawSleepSprite(ctx, x, h, now) {
 export function drawSleepFrame(canvas) {
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
-  ctx.fillStyle = PAPER; ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = SKY; ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = DIRT; ctx.fillRect(0, h - 22, w, 22);
   drawBackground(ctx, w, h, 0);
   ctx.strokeStyle = INK; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(0, h - 22); ctx.lineTo(w, h - 22); ctx.stroke();

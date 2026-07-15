@@ -486,13 +486,12 @@ a:focus-visible, button:focus-visible {
 .tj-polaroid {
   display: inline-block;
   background: #fff;
-  padding: 12px 12px 4px;
-  border: 1px solid rgba(43, 37, 32, 0.25);
-  box-shadow: 3px 4px 0 rgba(43, 37, 32, 0.18);
-  transform: rotate(-1.2deg);
-  margin: 4px 2px 8px;
+  padding: 8px 8px 10px;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.18);
+  transform: rotate(-2deg);
+  margin: 6px 2px 10px;
 }
-.tj-polaroid canvas { border: none !important; }
+.tj-polaroid canvas { display: block; border: none !important; }
 .tj-polaroid .caption {
   margin: 4px 0 2px;
   font-style: italic;
