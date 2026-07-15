@@ -482,7 +482,28 @@ a:focus-visible, button:focus-visible {
   .v3-stamp-meta { display: block; margin-top: var(--space-xs); }
 }
 
+/* ============ Treat jar polaroid frame ============ */
+.tj-polaroid {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 10px 4px;
+  border: 1px solid rgba(43, 37, 32, 0.25);
+  box-shadow: 3px 4px 0 rgba(43, 37, 32, 0.18);
+  transform: rotate(-1.2deg);
+  margin: 4px 2px 8px;
+}
+.tj-polaroid canvas { border: none !important; }
+.tj-polaroid .caption {
+  margin: 4px 0 2px;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  min-height: 1.3em;
+  max-width: 300px;
+}
+
 /* ============ Widget mounts (anti-flash) ============ */
-#treat-jar-mount { min-height: 170px; }
+#treat-jar-mount { min-height: 230px; }
 #tip-mount { min-height: 48px; }
 #reading-mount { min-height: 48px; }
