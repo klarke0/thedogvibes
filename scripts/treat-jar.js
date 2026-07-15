@@ -10,7 +10,7 @@ if (!mount) {
 } else if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   mount.innerHTML = `
     <div class="tj-polaroid">
-      <canvas id="tj-canvas" width="300" height="130" role="img"
+      <canvas id="tj-canvas" width="280" height="230" role="img"
               aria-label="pixel dog asleep in a backyard"></canvas>
       <p class="caption">reduced motion is on. he's napping.</p>
     </div>
@@ -29,7 +29,7 @@ function readCount() {
 function boot(root) {
   root.innerHTML = `
     <div class="tj-polaroid">
-      <canvas id="tj-canvas" width="300" height="130" role="img"
+      <canvas id="tj-canvas" width="280" height="230" role="img"
               aria-label="pixel dog waiting near a treat jar in a backyard"></canvas>
       <p id="tj-caption" class="caption" aria-live="polite">he knows the jar is there.</p>
     </div>

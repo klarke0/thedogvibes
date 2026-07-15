@@ -448,7 +448,7 @@ a:focus-visible, button:focus-visible {
   border: 1px dashed var(--ink);
   box-shadow: 3px 3px 0 rgba(43, 37, 32, 0.15);
   padding: var(--space-md) var(--space-lg);
-  max-width: 300px;
+  max-width: 280px;
   font-style: italic;
   transform: rotate(-0.8deg);
 }
@@ -486,7 +486,7 @@ a:focus-visible, button:focus-visible {
 .tj-polaroid {
   display: inline-block;
   background: #fff;
-  padding: 10px 10px 4px;
+  padding: 12px 12px 4px;
   border: 1px solid rgba(43, 37, 32, 0.25);
   box-shadow: 3px 4px 0 rgba(43, 37, 32, 0.18);
   transform: rotate(-1.2deg);
@@ -500,10 +500,10 @@ a:focus-visible, button:focus-visible {
   color: var(--muted);
   text-align: center;
   min-height: 1.3em;
-  max-width: 300px;
+  max-width: 280px;
 }
 
 /* ============ Widget mounts (anti-flash) ============ */
-#treat-jar-mount { min-height: 230px; }
+#treat-jar-mount { min-height: 330px; }
 #tip-mount { min-height: 48px; }
 #reading-mount { min-height: 48px; }
