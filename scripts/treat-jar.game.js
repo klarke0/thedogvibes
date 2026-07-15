@@ -363,15 +363,21 @@ function drawButterfly(ctx, w, h, now) {
 /* ---------- sleeping dog (nap trick + reduced-motion frame) ---------- */
 
 function drawSleepSprite(ctx, x, h, now) {
+  // body mirrored so the sleeping head faces the jar; z's drawn unmirrored
+  ctx.save();
+  ctx.translate((x + 13) * 2, 0);
+  ctx.scale(-1, 1);
   ctx.fillStyle = INK;
   ctx.fillRect(x - 4, h - 32, 34, 10);
   ctx.fillRect(x + 22, h - 38, 12, 8);
   ctx.fillRect(x + 22, h - 41, 4, 4);
   ctx.fillRect(x - 8, h - 30, 6, 4);
+  ctx.restore();
+  ctx.fillStyle = INK;
   ctx.font = '10px "Courier New", monospace';
   const drift = now ? (now / 40) % 14 : 0;
-  ctx.fillText('z', x + 34, h - 44 - drift * 0.5);
-  ctx.fillText('z', x + 40, h - 52 - drift * 0.3);
+  ctx.fillText('z', x - 18, h - 44 - drift * 0.5);
+  ctx.fillText('z', x - 12, h - 52 - drift * 0.3);
 }
 
 export function drawSleepFrame(canvas) {
