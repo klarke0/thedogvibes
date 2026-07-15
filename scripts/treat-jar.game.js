@@ -147,13 +147,23 @@ export function start(root, { storageKey }) {
   function drawTreatArc(now) {
     const h = canvas.height;
     const p = Math.min(1, (now - state.phaseStart) / TREAT_MS);
-    const x = JAR_X + 28 + (DOG_X - JAR_X - 18) * p;
+    const x = JAR_X + 28 + (DOG_X - JAR_X - 42) * p;
     const y = (h - 56) - Math.sin(p * Math.PI) * 30;
     ctx.fillStyle = ACCENT;
     ctx.fillRect(x, y, 5, 4);
   }
 
   function drawDog(x, h, now, trickId) {
+    // The sprite is authored facing right; the jar sits to the LEFT of the
+    // dog, so mirror the whole dog around its own center to face the jar.
+    ctx.save();
+    ctx.translate((x + 13) * 2, 0);
+    ctx.scale(-1, 1);
+    drawDogRightFacing(x, h, now, trickId);
+    ctx.restore();
+  }
+
+  function drawDogRightFacing(x, h, now, trickId) {
     ctx.fillStyle = INK;
     const idle = state.phase === 'idle' ? state.idleAnim : null;
     const tp = trickId ? (now - state.phaseStart) / state.trick.duration : 0;
