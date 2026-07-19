@@ -150,6 +150,18 @@ a:focus-visible, button:focus-visible {
   font-weight: 900;
 }
 
+/* Pull quote */
+.v3-pullquote {
+  margin: var(--space-xl) 0;
+  padding: var(--space-md) var(--space-lg);
+  border-left: 4px solid var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.2em;
+  line-height: 1.5;
+  color: var(--muted);
+  font-style: italic;
+}
+
 /* Stamp CTA */
 .v3-stamp {
   display: inline-block;
