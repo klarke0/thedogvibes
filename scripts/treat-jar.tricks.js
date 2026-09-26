@@ -50,6 +50,17 @@ export const TRICKS = Object.freeze([
     'you fed him into a nap.',
     'treat achieved. consciousness optional.',
   ]},
+  { id: 'pet', weight: 0, duration: 1800, captions: [
+    'yes good very good.',
+    'the ear scritches. he needed those.',
+    'leaning into it like the hand owes him money.',
+  ]},
+  { id: 'ball', weight: 0, duration: 2500, captions: [
+    'fetch. the original hustle.',
+    'he will bring it back. probably.',
+    'gone. the ball is gone. he is also gone.',
+    'aerodynamics evaluated. mission accepted.',
+  ]},
 ]);
 
 export const IDLE_LINES = Object.freeze([
@@ -61,6 +72,41 @@ export const IDLE_LINES = Object.freeze([
   'somewhere, a squirrel is safe. for now.',
   'the butterfly is not a treat. he checked.',
 ]);
+
+// Self-aware captions that fire at high treat counts (10+), mixed randomly into the rotation.
+export const HIGH_COUNT_CAPTIONS = Object.freeze([
+  'Excessive treat-giving is not a training methodology.',
+  'The irony of a treat-jar game on a dog trainer\'s website is not lost on me.',
+  'Treats without context are just calories.',
+  'This is not how professional training works.',
+]);
+
+// Returns a random high-count caption if count >= 10, or null.
+export function pickHighCountCaption(count) {
+  if (count < 10) return null;
+  return HIGH_COUNT_CAPTIONS[(Math.random() * HIGH_COUNT_CAPTIONS.length) | 0];
+}
+
+export const PET_CAPTIONS = Object.freeze([
+  'yes good very good.',
+  'the ear scritches. he needed those.',
+  'leaning into it like the hand owes him money.',
+]);
+
+export const BALL_CAPTIONS = Object.freeze([
+  'fetch. the original hustle.',
+  'he will bring it back. probably.',
+  'gone. the ball is gone. he is also gone.',
+  'aerodynamics evaluated. mission accepted.',
+]);
+
+export function pickPetCaption(rand) {
+  return PET_CAPTIONS[(rand() * PET_CAPTIONS.length) | 0];
+}
+
+export function pickBallCaption(rand) {
+  return BALL_CAPTIONS[(rand() * BALL_CAPTIONS.length) | 0];
+}
 
 const TOTAL_WEIGHT = TRICKS.reduce((s, t) => s + t.weight, 0);
 

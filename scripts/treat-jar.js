@@ -34,10 +34,19 @@ function boot(root) {
       <p id="tj-caption" class="caption" aria-live="polite">he knows the jar is there.</p>
     </div>
     <div class="tj-hud">
-      <button id="tj-jar" type="button">give a treat</button>
+      <button id="tj-jar"  type="button">treat</button>
+      <button id="tj-pet"  type="button">pet</button>
+      <button id="tj-ball" type="button">ball</button>
       <span id="tj-counter">treats given: ${readCount()}</span>
     </div>
     <p class="tj-help">click the jar. that's it. that's the game.</p>
+    <p id="tj-book-cta" class="tj-book-cta" style="display:none">ok, you clearly need help. <a href="/book.html">book a session →</a></p>
+    <p class="tj-disclaimer">No dogs were trained in the making of this game.</p>
+    <div class="tj-tip">
+      <span class="tj-tip-label">enjoyed the game?</span>
+      <!-- TIP_JAR_URL: replace href with payment link when credentials are available -->
+      <a class="tj-tip-link" href="#tip-jar-coming-soon" aria-label="Leave a tip">leave a tip ☕</a>
+    </div>
   `;
   import('./treat-jar.game.js').then(m => m.start(root, { storageKey: STORAGE_KEY }));
 }

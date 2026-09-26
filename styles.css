@@ -111,8 +111,12 @@ a:focus-visible, button:focus-visible {
   margin-bottom: -6px;
   opacity: 0.85;
 }
+.v3-wordmark .dog,
+.v3-wordmark .vibes {
+  display: block;
+}
 .v3-logo {
-  width: clamp(120px, 18vw, 220px);
+  width: clamp(260px, 36vw, 460px);
   height: auto;
   flex-shrink: 0;
 }
@@ -281,7 +285,7 @@ a:focus-visible, button:focus-visible {
 #treat-jar-mount canvas {
   display: block;
   width: 100%;
-  max-width: 380px;
+  max-width: 320px;
   height: auto;
   background: #fff;
   border: 1px solid var(--ink);
@@ -310,6 +314,38 @@ a:focus-visible, button:focus-visible {
 .tj-caption { font-family: var(--font-body); font-style: italic; font-size: 13px; margin: 6px 0 0; min-height: 1.2em; }
 .tj-counter { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 .tj-help { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin: 6px 0 0; }
+.tj-disclaimer { font-family: var(--font-mono); font-size: 10px; color: var(--muted); opacity: 0.55; margin: 8px 0 0; font-style: italic; }
+.tj-book-cta { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin: 8px 0 0; }
+.tj-book-cta a { color: var(--ink); text-decoration: underline; opacity: 0.75; }
+.tj-book-cta a:hover { opacity: 1; }
+.tj-tip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed rgba(43,37,32,0.2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.tj-tip-label { color: var(--muted); letter-spacing: 0.5px; }
+.tj-tip-link {
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+  transition: opacity var(--t-base) ease;
+}
+.tj-tip-link:hover { opacity: 1; text-decoration: underline; }
+
+/* Footer tip jar link — site-wide, second placement for visibility */
+.footer-tip-link {
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--t-base) ease;
+}
+.footer-tip-link:hover { opacity: 1; text-decoration: underline; }
 
 /* ============ Guestbook ============ */
 .v3-guestbook { max-width: 700px; margin: 0 auto; padding: 0 var(--space-lg); }
@@ -428,18 +464,28 @@ a:focus-visible, button:focus-visible {
   body { font-size: 16px; }
   .v3-wordmark { font-size: clamp(40px, 12vw, 56px); }
   .v3-masthead-row { gap: var(--space-md); padding: var(--space-lg) var(--space-md) var(--space-sm); }
-  .v3-logo { width: clamp(96px, 28vw, 140px); }
+  .v3-logo { width: clamp(160px, 48vw, 240px); }
   .v3-sub-mast { margin: 0 var(--space-md) var(--space-md); font-size: 15px; }
   .v3-divider { margin: var(--space-md) var(--space-md); }
   .v3-nav { font-size: 11px; padding: 8px 12px; }
   .v3-nav a { margin: 0 4px; }
   .v3-home, .v3-guestbook { padding: 0 var(--space-md); }
-  .v3-polaroid img { width: 110px; height: 90px; }
+  .v3-polaroid { display: block; width: fit-content; margin: var(--space-md) auto; }
+  .v3-polaroid img { width: 130px; height: 110px; object-fit: cover; }
+  .v3-polaroid.tilt-l, .v3-polaroid.tilt-r { transform: none; }
   .v3-polaroid-strip { display: flex; flex-wrap: wrap; justify-content: center; }
   .v3-ribbon { font-size: 10px; padding: 6px 10px; letter-spacing: 1px; }
   .v3-stamp-meta { display: block; margin: var(--space-sm) 0 0; }
 }
 
+
+/* Sliding scale note */
+.v3-sliding-scale-note {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
 
 /* ============ Page utilities (shared non-home layout) ============ */
 .v3-page { max-width: 720px; margin: 0 auto; padding: 0 var(--space-lg); }
@@ -482,7 +528,17 @@ a:focus-visible, button:focus-visible {
 .v3-float-r { float: right; margin: 0 0 var(--space-md) var(--space-lg); }
 .v3-float-l { float: left; margin: 0 var(--space-lg) var(--space-md) 0; }
 @media (max-width: 600px) {
-  .v3-float-r, .v3-float-l { float: none; margin: var(--space-md) auto; display: table; }
+  .v3-float-r, .v3-float-l {
+    float: none;
+    display: block;
+    margin: var(--space-md) auto;
+    text-align: center;
+  }
+  .v3-float-r.v3-polaroid,
+  .v3-float-l.v3-polaroid {
+    transform: none;
+    width: fit-content;
+  }
 }
 
 /* ============ Mid-viewport sweep (481-800px) ============ */
@@ -496,22 +552,23 @@ a:focus-visible, button:focus-visible {
 
 /* ============ Treat jar polaroid frame ============ */
 .tj-polaroid {
-  display: inline-block;
+  display: block;
+  width: fit-content;
   background: #fff;
-  padding: 8px 8px 10px;
+  padding: 10px 10px 18px;
   box-shadow: 2px 3px 8px rgba(0,0,0,0.18);
   transform: rotate(-2deg);
-  margin: 6px 2px 10px;
+  margin: 8px auto 14px;
 }
-.tj-polaroid canvas { display: block; border: none !important; }
+.tj-polaroid canvas { border: 1px solid rgba(43,37,32,0.12) !important; }
 .tj-polaroid .caption {
-  margin: 4px 0 2px;
+  margin: 8px 0 0;
+  font-family: var(--font-body);
   font-style: italic;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   text-align: center;
   min-height: 1.3em;
-  max-width: 280px;
 }
 
 /* ============ Widget mounts (anti-flash) ============ */
