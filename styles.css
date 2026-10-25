@@ -385,23 +385,93 @@ p:last-child {
     overflow: visible;
   }
 
+  /* First screen = header + hero content, nothing else. The content block is
+     exactly one visible screen tall (svh = Safari toolbar showing) and centred,
+     so spacing is balanced and the trust bar starts below the fold. */
   .hero.snap-section {
+    padding: 0;
+  }
+
+  .hero.snap-section > .container {
     min-height: calc(100vh - 72px);
     min-height: calc(100svh - 72px);
-    padding-top: 32px;
-    padding-bottom: 0;
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 
   .hero--logo .container {
-    gap: 20px;
+    justify-content: center;
+    gap: clamp(12px, 2.6svh, 28px);
   }
 
   .hero__logo-feature {
-    max-width: 120px;
+    width: clamp(96px, 20svh, 170px);
+    max-width: none;
   }
 
-  .hero.snap-section .trust-bar {
-    margin-top: 32px;
+  .hero--logo h1 {
+    font-size: clamp(22px, 4.4svh, 32px);
+    margin-bottom: clamp(10px, 2svh, 20px);
+  }
+
+  .hero--logo .hero__content--centered p {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: clamp(14px, 2.8svh, 28px);
+  }
+
+  .hero--logo .btn-group {
+    gap: 10px;
+  }
+
+  .hero--logo .btn {
+    padding: 15px 28px;
+  }
+
+  /* About hero (photo + headline): same one-screen frame. Shorter photo,
+     tighter gap, so photo, headline, byline and both buttons fit. */
+  .hero.snap-section:not(.hero--logo) > .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(14px, 2.6svh, 24px);
+  }
+
+  .hero:not(.hero--logo) .hero__image img {
+    height: clamp(150px, 30svh, 300px);
+    object-position: center 30%;
+  }
+
+  .hero:not(.hero--logo) h1 {
+    font-size: clamp(20px, 3.9svh, 30px);
+    margin-bottom: 0;
+  }
+
+  .hero:not(.hero--logo) .hero__content p {
+    margin-top: 8px !important;
+    font-size: 15px !important;
+  }
+
+  .hero:not(.hero--logo) .btn-group {
+    margin-top: clamp(14px, 2.6svh, 24px) !important;
+    gap: 10px;
+  }
+
+  .hero:not(.hero--logo) .btn {
+    padding: 14px 24px;
+  }
+
+  /* Short phones (SE-class with toolbar): trim the About photo a bit more. */
+  @media (max-height: 600px) {
+    .hero:not(.hero--logo) .hero__image img {
+      height: 120px;
+    }
+  }
+
+  /* Services intro photo: keep the first screen to headline + intro + photo. */
+  .page-intro .grid-2 img {
+    height: clamp(180px, 32svh, 300px) !important;
   }
 }
 
