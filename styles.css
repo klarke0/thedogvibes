@@ -27,9 +27,14 @@ html {
   -ms-overflow-style: none;
 }
 
+/* Mobile flow (2026-10-25): no snap on phones/tablets.
+   The page scrolls as one normal document so iOS Safari's toolbar collapses,
+   momentum works, and the footer sits in the same flow. Snap stays on desktop. */
 @media (max-width: 768px) {
   .scroll-container {
-    scroll-snap-type: y proximity;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
   }
 }
 
@@ -368,6 +373,36 @@ p:last-child {
   scroll-snap-align: start;
   overflow-y: auto;
   width: 100%;
+}
+
+/* Mobile: sections size to their content (no forced full-screen frames,
+   no inner scroll areas). Only the hero fills the first screen, using svh so
+   it fits the visible area with Safari's toolbar showing. */
+@media (max-width: 768px) {
+  .snap-section {
+    min-height: 0;
+    scroll-snap-align: none;
+    overflow: visible;
+  }
+
+  .hero.snap-section {
+    min-height: calc(100vh - 72px);
+    min-height: calc(100svh - 72px);
+    padding-top: 32px;
+    padding-bottom: 0;
+  }
+
+  .hero--logo .container {
+    gap: 20px;
+  }
+
+  .hero__logo-feature {
+    max-width: 120px;
+  }
+
+  .hero.snap-section .trust-bar {
+    margin-top: 32px;
+  }
 }
 
 /* Trust Bar */
