@@ -18,24 +18,14 @@ html {
   scroll-padding-top: 96px; /* matches sticky header height */
 }
 
+/* Page flow (mobile 2026-10-25, desktop 2026-11-01): no scroll-snap and no
+   nested scroller at any width. .scroll-container is a plain wrapper; the
+   document scrolls as one page, so the wheel, trackpad, momentum and the
+   footer all behave like every other page on the site. */
 .scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-/* Mobile flow (2026-10-25): no snap on phones/tablets.
-   The page scrolls as one normal document so iOS Safari's toolbar collapses,
-   momentum works, and the footer sits in the same flow. Snap stays on desktop. */
-@media (max-width: 768px) {
-  .scroll-container {
-    height: auto;
-    overflow: visible;
-    scroll-snap-type: none;
-  }
+  height: auto;
+  overflow: visible;
+  scroll-snap-type: none;
 }
 
 @media (max-width: 600px) {
@@ -359,20 +349,43 @@ p:last-child {
   }
 }
 
-/* Scroll Snap */
-/* Applied to index.html and about.html sections for full-page snap scrolling.
-   Each section fills the full viewport height. overflow-y: auto allows internal
-   scrolling on content-heavy sections. Not applied to services.html due to
-   consecutive zero-padding service cards. */
+/* Home/About sections (formerly full-screen snap frames). Sections size to
+   their content; only the hero fills the first screen (see below). */
 .snap-section {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  scroll-snap-align: start;
-  overflow-y: auto;
   width: 100%;
+}
+
+/* Desktop first screen = header (96px) + hero, nothing else. The hero fills
+   the visible height; spacing, logo and photo scale with the window height so
+   the buttons (and Home's trust bar) are on screen at 1366x768. */
+@media (min-width: 769px) {
+  .hero.snap-section {
+    min-height: calc(100vh - 96px);
+    min-height: calc(100svh - 96px);
+    padding: 0;
+  }
+
+  .hero.snap-section > .container {
+    padding-top: clamp(24px, 6vh, 100px);
+    padding-bottom: clamp(24px, 6vh, 100px);
+  }
+
+  .hero--logo .container {
+    gap: clamp(16px, 3.5vh, 40px);
+  }
+
+  .hero--logo .hero__logo-feature {
+    width: clamp(160px, 30vh, 360px);
+    max-width: none;
+  }
+
+  .hero:not(.hero--logo) .hero__image img {
+    height: clamp(280px, 62vh, 500px);
+  }
 }
 
 /* Mobile: sections size to their content (no forced full-screen frames,
