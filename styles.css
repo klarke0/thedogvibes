@@ -1439,3 +1439,329 @@ p:last-child {
               transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--reveal-delay, 0s);
 }
+
+
+/* ── Home colour rhythm (board 21) ─────────────────────────────────────
+   Home alternates white / black at every width: hero W, value B, pain W,
+   how it works B, why W, testimonials B, closing W, footer B. The first
+   screen is fully white: the trust bar is a quiet line, not a black band. */
+.hero--logo .trust-bar {
+  background: transparent;
+  color: #111;
+  border-top: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.section--dark .testimonial-cycler__quote blockquote { color: #fff; }
+.section--dark .testimonial-cycler__quote cite { color: rgba(255, 255, 255, 0.65); }
+
+/* ── Locked frames, site-wide (board 21) ───────────────────────────────
+   html.frames is set (inline head script + frames.js) on any screen at least
+   520px tall: phones in portrait, tablets, desktops. Short landscape phones
+   keep plain scrolling.
+   One scroller (the document). Every frame is 100lvh so the strip behind iOS
+   26 Safari's floating bar is always that frame's colour; content sits in the
+   top 100svh, above the bar. Nothing moves with scroll position: native
+   scroll, scroll-snap and sticky do all the moving.
+   <html data-frames>: (none) = snap mandatory, "loose" = proximity (Book, so
+   the Tally form scrolls freely), "read" = no snap (blog posts, legal).
+   A section whose content doesn't fit one screen gets .is-pinned: the heading
+   band stays put (sticky) and each piece is its own full-screen snap stop that
+   scrolls up under it. */
+html.frames {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 0;
+  background: #111;               /* overscroll past the footer stays black */
+}
+html.frames[data-frames="loose"] { scroll-snap-type: y proximity; }
+html.frames[data-frames="read"] { scroll-snap-type: none; }
+
+.frames body { --hh: 96px; background: #F9F8F6; }
+@media (max-width: 600px) { .frames body { --hh: 72px; } }
+
+/* The header belongs to frame 1 and scrolls away with it (no sticky white bar
+   over black frames). It is the first snap point. */
+.frames .header {
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Frame 1 on Home / About (.hero) */
+.frames .hero.snap-section {
+  min-height: calc(100vh - var(--hh));
+  min-height: calc(100lvh - var(--hh));
+  padding: 0 0 calc(100lvh - 100svh);
+}
+
+/* Each section is its own stacking layer, later ones on top, so a pinned
+   frame's sticky band slides under the next frame instead of over it. */
+.frames section,
+.frames footer.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Whole frames: content fits, one swipe each. */
+.frames [data-frame] {
+  min-height: 100vh;
+  min-height: 100lvh;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.frames [data-frame] > .container {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(env(safe-area-inset-top) + 40px);
+  padding-bottom: 40px;
+}
+
+/* First section after the header shares frame 1 with it. */
+.frames [data-frame][data-frame-first] {
+  min-height: calc(100vh - var(--hh));
+  min-height: calc(100lvh - var(--hh));
+  scroll-snap-align: none;
+}
+.frames [data-frame][data-frame-first] > .container {
+  min-height: calc(100vh - var(--hh));
+  min-height: calc(100svh - var(--hh));
+  padding-top: 32px;
+}
+
+/* ---- Pinned frames ---- */
+.frames [data-frame].is-pinned { --bg: #F9F8F6; --bg0: rgba(249, 248, 246, 0); display: block; scroll-snap-align: none; }
+.frames [data-frame].section--dark.is-pinned { --bg: #111; --bg0: rgba(17, 17, 17, 0); }
+
+.frames .is-pinned > .container {
+  display: block;
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative;
+}
+
+/* Transparent full-screen sticky layer: holds the band at the top for the
+   whole section. Must have no background or it hides the pieces. */
+.frames .is-pinned .frame-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100lvh;
+  margin-bottom: -100vh;
+  margin-bottom: -100lvh;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frames .is-pinned .frame-band {
+  margin: 0 -24px;
+  padding: calc(env(safe-area-inset-top) + 40px) 24px 30px;
+  text-align: center;
+  background: linear-gradient(var(--bg) calc(100% - 26px), var(--bg0));
+}
+.frames [data-frame-first].is-pinned .frame-band { padding-top: 32px; }
+
+.frames .is-pinned .frame-band h1,
+.frames .is-pinned .frame-band h2,
+.frames .is-pinned .frame-band h3 { opacity: 1 !important; transform: none !important; }
+
+.frames .is-pinned .frame-pieces {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 680px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+}
+.frames .is-pinned .frame-group { display: contents; }
+
+.frames .is-pinned .frame-pieces > :not(.frame-group),
+.frames .is-pinned .frame-group > * {
+  height: 100vh;
+  height: 100lvh;
+  margin: 0;
+  padding: var(--hb) 0 calc(100lvh - 100svh + 32px);
+  display: block;
+  align-content: center;          /* vertical centring without making inline text into flex items */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  border: 0;
+}
+
+.frames .is-pinned .is-last {
+  padding-bottom: calc(100lvh - 100svh + var(--th) + 40px);
+}
+
+/* A piece that still doesn't fit grows and scrolls through in its frame. */
+.frames .is-pinned .frame-pieces > .is-tall,
+.frames .is-pinned .frame-group > .is-tall {
+  height: auto;
+  min-height: 100vh;
+  min-height: 100lvh;
+  align-content: start;
+}
+
+/* First section after the header: its first piece shares frame 1. */
+.frames [data-frame-first].is-pinned .is-first {
+  height: calc(100vh - var(--hh));
+  height: calc(100lvh - var(--hh));
+  scroll-snap-align: none;
+}
+
+/* The section's closing line / button rides at the bottom of the last piece. */
+.frames .is-pinned .frame-tail {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: calc(100lvh - 100svh + 28px);
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+  z-index: 1;
+}
+
+/* No fade/lift reveals inside pinned frames: the slide-up is the motion. */
+.frames .is-pinned [data-reveal],
+.frames .is-pinned[data-reveal],
+.frames .is-pinned [data-stagger] > * {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* 1-of-N dots under the heading */
+.frame-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+  pointer-events: auto;
+}
+.frame-band > .frame-dots:first-child { margin-top: 0; }
+.frame-dots button {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  padding: 0;
+  border-radius: 4px;
+  background: currentColor;
+  color: inherit;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.25s, width 0.25s;
+  position: relative;
+}
+.frame-dots button::after { content: ''; position: absolute; inset: -10px -4px; }  /* bigger tap target */
+.frame-dots button[aria-current="true"] { opacity: 1; width: 22px; }
+.frame-dots button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+.frames footer.footer { scroll-snap-align: end; }
+
+/* Book: the "Start here" hint sits above Safari's bar, not behind it. */
+.frames .scroll-hint { bottom: calc(100lvh - 100svh + 20px); }
+/* Book: the form section is a snap point; inside it the page scrolls freely. */
+html.frames[data-frames="loose"] .frame-free { scroll-snap-align: start; }
+
+/* ---- Piece styling per component ---- */
+.frames .is-pinned .frame-pieces > p,
+.frames .is-pinned .frame-group > p { font-size: 19px; line-height: 1.6; }
+
+.frames .is-pinned .pain-list { text-align: center !important; }
+.frames .is-pinned .pain-list li {
+  padding-left: 0;
+  font-size: 21px;
+  line-height: 1.45;
+}
+.frames .is-pinned .pain-list li::before {
+  position: static;
+  display: block;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.frames .is-pinned .hiw-step p { font-size: 17px; }
+
+.frames .is-pinned .grid-3 > div h3 { font-size: 22px; margin-bottom: 10px; }
+.frames .is-pinned .grid-3 > div p { font-size: 18px; line-height: 1.6; }
+
+.frames .is-pinned .testimonial-cycler__quote {
+  position: static;
+  opacity: 1;
+  filter: none;
+  transform: none;
+  transition: none;
+  pointer-events: auto;
+}
+.frames .is-pinned .testimonial-cycler__quote blockquote { font-size: 19px; line-height: 1.6; }
+
+/* FAQ: each question is its own piece, answer shown (no accordion needed). */
+.frames .is-pinned .faq-item { border: 0; }
+.frames .is-pinned .faq-question { font-size: 22px; line-height: 1.3; padding: 0 0 16px; cursor: default; }
+.frames .is-pinned .faq-question::after { display: none; }
+.frames .is-pinned .faq-answer { max-height: none; overflow: visible; transition: none; }
+.frames .is-pinned .faq-answer p { font-size: 18px; line-height: 1.6; padding-bottom: 0; }
+
+/* Blog index entries */
+.frames .is-pinned .blog-post-entry { border: 0; }
+
+/* Service cards: the card frame itself spans several screens, so drop the box. */
+.frames .is-pinned .service-card { border: 0; padding: 0; margin: 0; }
+.frames .is-pinned .service-card__includes { margin: 0; }
+.frames .is-pinned .service-card__includes li { font-size: 18px; }
+.frames .is-pinned .service-card__includes + h4 { margin-top: 24px; }
+
+/* Short phones (SE): long paragraphs a touch smaller so one fits a screen. */
+@media (max-height: 600px) {
+  .frames .is-pinned .frame-band { padding-bottom: 20px; }
+  .frames .is-pinned .frame-band p { font-size: 16px !important; line-height: 1.45; margin-top: 8px !important; }
+  .frames .is-pinned .frame-band .frame-dots { margin-top: 12px; }
+  .frames .is-pinned .blog-entry-title { font-size: 21px; margin-bottom: 10px; }
+  .frames .is-pinned .blog-entry-excerpt { font-size: 16px; line-height: 1.55; margin-bottom: 12px; }
+  .frames .is-pinned .frame-pieces > p,
+  .frames .is-pinned .frame-group > p { font-size: 17px; line-height: 1.55; }
+}
+
+/* ---- Colour helpers for sections that changed colour (board 21) ---- */
+.section--dark a.btn--primary { background: #fff; color: #111; }
+.section--dark .service-card { border-color: #fff; }
+.section--dark .service-card__badge { background: #fff; color: #111; }
+.section--dark .service-card__meta { color: rgba(255, 255, 255, 0.7); }
+.section--offwhite .pull-quote { border-left-color: #111; }
+.section--dark .blog-entry-excerpt { color: rgba(255, 255, 255, 0.75); }
+.section--dark .blog-read-more { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html, html.frames { scroll-behavior: auto; }
+  .frame-dots button { transition: none; }
+  .frames [data-reveal], .frames [data-stagger] > *, .frames [data-hero] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* About credentials: each row is a piece on short screens */
+.frames .is-pinned .credentials-table { overflow: visible; }   /* a scroller here would own the snap points */
+.frames .is-pinned tbody.frame-group { display: block; }
+.frames .is-pinned .credentials-table tr { text-align: center; }
+.frames .is-pinned .credentials-table td { display: block; width: auto !important; border: 0; padding: 4px 0; }
+.frames .is-pinned .credentials-table td:first-child { font-size: 14px; opacity: 0.6; letter-spacing: 0.1em; text-transform: uppercase; }
+.frames .is-pinned .credentials-table td + td { font-size: 21px; line-height: 1.45; }
+.frames .is-pinned .grid-2 img { height: min(400px, 50svh) !important; }
+
+/* Desktop: pinned pieces read at a desktop size */
+@media (min-width: 900px) {
+  .frames .is-pinned .frame-pieces > p,
+  .frames .is-pinned .frame-group > p,
+  .frames .is-pinned .faq-answer p,
+  .frames .is-pinned .testimonial-cycler__quote blockquote { font-size: 21px; }
+  .frames .is-pinned .service-card__includes li { font-size: 19px; }
+}
