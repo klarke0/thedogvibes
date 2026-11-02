@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>/* Locked frames (board 21): set before first paint, frames.js does the rest */
+    try { if (matchMedia('(min-height: 520px)').matches) document.documentElement.classList.add('frames'); } catch (e) {}</script>
 </head>
 <body>
 
@@ -55,22 +57,26 @@
   </section>
 
   <!-- Origin Story -->
-  <section class="section section--offwhite snap-section">
+  <section class="section section--dark snap-section" data-frame aria-label="My story">
     <div class="container narrow" data-reveal>
+      <div class="frame-pin"><div class="frame-band"></div></div>
+      <div class="frame-pieces">
       <p>My name is Kevin Clarke, and this started earlier than most origin stories do. One of the first books I ever checked out of the library was about dog training. I was a kid with dogs at home, and I wanted to know what was actually going on with them.</p>
       <p>So I read it, then read it again, and the thing that stuck wasn't the training so much as the idea that another animal's behavior could be understood if you paid close enough attention. That never really went away.</p>
       <p>For over a decade I ran my own dog care and training work in New York City. Manhattan, every kind of weather, every kind of dog. Labs, pit bulls, fearful rescues, anxious seniors, puppies who'd never seen a leash. Hundreds of dogs. Thousands of hours. No franchise behind me and nobody handing me a script, which meant when something didn't work I had to figure out why myself.</p>
       <p>That's also where I learned you can't separate a dog's behavior from the rest of their life. Their environment, their history, their routine, who they live with. It all shows up in how they move through the world.</p>
       <p>When I moved to Portland I brought all of it with me and built what I'd always wanted. A training practice that treats every dog as the individual they are.</p>
       <p>That's Dog Vibes.</p>
+      </div>
     </div>
   </section>
 
   <!-- Philosophy -->
-  <section class="section section--dark snap-section">
+  <section class="section section--offwhite snap-section" data-frame>
     <div class="container narrow" data-reveal>
-      <h2>How I think about training.</h2>
-      <div style="margin-top: 24px;">
+      <div class="frame-pin"><div class="frame-band"><h2>How I think about training.</h2></div></div>
+      <div class="frame-pieces">
+      <div class="frame-group" style="margin-top: 24px;">
         <p>I'm not a punish-the-bad-behavior trainer. I'm not a bribe-them-with-treats-and-hope-it-sticks trainer either. I'm a build-the-foundation trainer.</p>
         <p>Where I'm firm is the ethics. Force-free, positive reinforcement, and I don't bend on that. Where I'm not firm is technique. Most trainers I've come across have one method and every dog gets it, which has never made sense to me. A reactive dog on a narrow sidewalk and a bored adolescent who won't recall in an open field are not the same problem.</p>
         <p>So I've taken from wherever the useful thing came from. Marine mammal training, where there's no leash and no corrections available, so what you're offering has to be genuinely worth it to the animal. Working and sport dogs, where drive and motivation get taken seriously in a way pet training tends to skip past. Ethology, which is the study of how animals actually behave on their own terms.</p>
@@ -83,46 +89,47 @@
       <div class="pull-quote">
         "Training works best when it's designed around the specific dog in front of you, not the average dog."
       </div>
+      </div>
     </div>
   </section>
 
   <!-- What Makes This Different -->
-  <section class="section snap-section">
+  <section class="section section--dark snap-section" data-frame>
     <div class="container" data-reveal>
-      <div class="grid-2">
+      <div class="frame-pin"><div class="frame-band"><h2>Where things stand now.</h2></div></div>
+      <div class="grid-2 frame-pieces" style="margin-top: 32px;">
         <div>
           <img src="images/IMG_1233.jpg" alt="Kevin Clarke with a golden retriever" style="width: 100%; height: 400px; object-fit: cover;">
         </div>
-        <div>
-          <h2>Where things stand now.</h2>
-          <div style="margin-top: 24px;">
+        <div class="frame-group">
             <p>Dog Vibes isn't my full-time work anymore, and I've decided I like it that way. It's the thing I keep coming back to because I want to, which means I can be choosy about it.</p>
             <p>I take a small number of dogs at a time and my schedule is limited, so I only say yes to work I can properly commit to.</p>
             <p>When you work with Dog Vibes you get me. Not a junior trainer with a method sheet, and not someone counting how many clients fit in a week.</p>
             <p>You'll walk away from our work together knowing <em>why</em> your dog does what they do, and what to do about it. Not just a trained dog, but an owner who understands their dog.</p>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Credentials -->
-  <section class="section section--offwhite snap-section">
+  <section class="section section--offwhite snap-section" data-frame>
     <div class="container narrow" data-reveal>
-      <h2>A little more about my background.</h2>
-      <table class="credentials-table" style="margin-top: 32px;">
+      <div class="frame-pin"><div class="frame-band"><h2>A little more about my background.</h2></div></div>
+      <table class="credentials-table frame-pieces" style="margin-top: 32px;">
+        <tbody class="frame-group">
         <tr><td>Experience</td><td>10+ years professional dog care and behavior work</td></tr>
         <tr><td>Dogs worked with</td><td>Hundreds, across breeds, temperaments, and behavioral challenges</td></tr>
         <tr><td>Specialties</td><td>Behavioral training, scent work, alert dogs, assistance dog task training</td></tr>
         <tr><td>Methods</td><td>Classical conditioning, positive reinforcement (force-free only)</td></tr>
         <tr><td>Location</td><td>Portland, OR, serving clients remotely nationwide</td></tr>
         <tr><td>Philosophy</td><td>Holistic. Individualized. Owner-empowerment focused.</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section section--dark snap-section">
+  <section class="section section--dark snap-section" data-frame>
     <div class="container narrow text-center" data-reveal>
       <h2>Want to see if we're a good fit?</h2>
       <p style="margin-top: 24px;">Let's start with a conversation about your dog. No pressure, no commitment. Just a chance to talk through what's going on and whether The Dog Vibes is the right call.</p>
@@ -170,5 +177,6 @@
   </footer>
 
   <script src="animations.js"></script>
+  <script src="frames.js"></script>
 </body>
 </html>

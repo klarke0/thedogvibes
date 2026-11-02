@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-frames="loose">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>/* Locked frames (board 21): set before first paint, frames.js does the rest */
+    try { if (matchMedia('(min-height: 520px)').matches) document.documentElement.classList.add('frames'); } catch (e) {}</script>
 </head>
 <body>
 
@@ -36,7 +38,7 @@
   </header>
 
   <!-- Page Hero -->
-  <section class="section" style="position: relative;">
+  <section class="section" style="position: relative;" data-frame data-frame-first>
     <div class="container narrow text-center">
       <h1 data-hero>Let's talk about your dog.</h1>
       <p data-hero style="margin-top: 16px; font-size: 18px;">The first step is simple: fill out a short intake form, and you'll get a link to book your free call shortly after. I read your answers before we talk.</p>
@@ -48,9 +50,10 @@
   </section>
 
   <!-- What Happens After You Submit -->
-  <section class="section section--dark" style="padding-top: 60px; padding-bottom: 60px;">
+  <section class="section section--dark" style="padding-top: 60px; padding-bottom: 60px;" data-frame aria-label="What happens next">
     <div class="container text-center">
-      <div class="hiw-grid" data-stagger style="margin-top: 0;">
+      <div class="frame-pin"><div class="frame-band"></div></div>
+      <div class="hiw-grid frame-pieces" data-stagger style="margin-top: 0;">
         <div class="hiw-step">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" /></svg>
@@ -87,8 +90,8 @@
     </div>
   </section>
 
-  <!-- Intake Form -->
-  <section class="section">
+  <!-- Intake Form (free scroll: no snap points inside the form) -->
+  <section class="section frame-free">
     <div class="container narrow" data-reveal>
       <h2 class="text-center">Start here. Tell me about your dog.</h2>
       <div style="margin-top: 40px; position: relative;">
@@ -178,5 +181,6 @@
   </footer>
 
   <script src="animations.js"></script>
+  <script src="frames.js"></script>
 </body>
 </html>

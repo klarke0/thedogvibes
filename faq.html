@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>/* Locked frames (board 21): set before first paint, frames.js does the rest */
+    try { if (matchMedia('(min-height: 520px)').matches) document.documentElement.classList.add('frames'); } catch (e) {}</script>
 </head>
 <body>
 
@@ -36,17 +38,14 @@
   </header>
 
   <!-- FAQ Page Hero -->
-  <section class="section section--offwhite">
+  <!-- FAQ hero + accordion share one frame (board 21) -->
+  <section class="section section--offwhite" data-frame data-frame-first>
     <div class="container narrow">
+      <div class="frame-pin"><div class="frame-band">
       <h1 data-hero>Frequently Asked Questions</h1>
       <p data-hero style="margin-top: 16px; font-size: 18px; color: #555;">Everything you need to know about working with The Dog Vibes.</p>
-    </div>
-  </section>
-
-  <!-- FAQ Accordion -->
-  <section class="section">
-    <div class="container narrow">
-      <div data-stagger data-stagger-delay="0.07" style="margin-top: 0;">
+      </div></div>
+      <div class="frame-pieces" data-stagger data-stagger-delay="0.07" style="margin-top: 48px;">
         <div class="faq-item">
           <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do you work with puppies?</button>
           <div class="faq-answer">
@@ -114,7 +113,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="section section--dark">
+  <section class="section section--dark" data-frame>
     <div class="container narrow text-center" data-reveal>
       <h2>Still have questions?</h2>
       <p style="margin-top: 24px;">The best way to get answers is to book a free Discovery Consultation. We'll talk through everything: your dog, your goals, and whether The Dog Vibes is the right fit.</p>
@@ -160,5 +159,6 @@
   </footer>
 
   <script src="animations.js"></script>
+  <script src="frames.js"></script>
 </body>
 </html>

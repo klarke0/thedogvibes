@@ -1,23 +1,27 @@
-/* frames.js — Home "locked frames" on phones (board 21)
+/* frames.js — site-wide "locked frames" (board 21)
  *
- * Phones (portrait, <= 768px wide, >= 520px tall) get html.frames: every section
- * is a full-screen snap point and the page alternates white / black. All the
- * moving is native scroll + CSS scroll-snap; this file never moves anything
- * in response to scroll position.
+ * Any screen at least 520px tall (phones in portrait, desktops, tablets) gets
+ * html.frames: every section is a full-screen frame, alternating white / black.
+ * Short landscape phones keep plain scrolling.
  *
- * What it does, on load / width change only:
- *  1. Decides per [data-frame] section whether its content fits one screen.
- *     If not, the section becomes .is-pinned: heading band held by CSS sticky,
- *     each child of .frame-pieces is its own full-screen snap stop that scrolls
- *     up under the band ("pinned frame").
- *  2. Measures the band (--hb) and the optional .frame-tail (--th) so pieces
- *     sit between the band and Safari's toolbar.
+ * The page picks how frames scroll with <html data-frames="...">:
+ *   (none)  snap  — scroll-snap mandatory, one frame (or piece) per swipe / wheel step
+ *   loose         — scroll-snap proximity (Book: the Tally form scrolls freely)
+ *   read          — no snap; frame look with normal reading scroll (posts, legal)
+ *
+ * All the moving is native scroll + CSS scroll-snap + sticky. This file never
+ * moves anything in response to scroll position. On load / width change only:
+ *  1. Per [data-frame] section with .frame-pieces: if the content needs more
+ *     than ~85% of the visible screen, the section becomes .is-pinned: heading
+ *     band held by sticky, each piece its own full-screen stop sliding up under
+ *     it. .frame-group children count as pieces (lets nested markup flatten).
+ *  2. Measures the band (--hb) and the optional .frame-tail (--th).
  *  3. Adds 1-of-N dots and lights the one on screen (IntersectionObserver).
- *
- * Desktop / landscape: removes everything; the page scrolls normally.
+ *  4. A piece still too tall for one screen gets .is-tall (grows, scrolls
+ *     through inside its frame) instead of being clipped.
  */
 (function () {
-  var MQ = '(max-width: 768px) and (min-height: 520px)';
+  var MQ = '(min-height: 520px)';
   var root = document.documentElement;
   var mq = window.matchMedia(MQ);
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -35,20 +39,33 @@
     return probe.offsetHeight;
   }
 
+  function piecesOf(sec) {
+    var out = [];
+    [].forEach.call(sec.querySelector('.frame-pieces').children, function (c) {
+      if (c.classList.contains('frame-group')) [].push.apply(out, c.children);
+      else out.push(c);
+    });
+    return out;
+  }
+
   function unpin(sec) {
     sec.classList.remove('is-pinned');
     sec.style.removeProperty('--hb');
     sec.style.removeProperty('--th');
+    [].forEach.call(sec.querySelectorAll('.is-first, .is-last, .is-tall'), function (p) { p.classList.remove('is-first', 'is-last', 'is-tall'); });
     var dots = sec.querySelector('.frame-dots');
     if (dots) dots.parentNode.removeChild(dots);
   }
 
   function pin(sec) {
     var band = sec.querySelector('.frame-band');
-    var pieces = [].slice.call(sec.querySelector('.frame-pieces').children);
+    var pieces = piecesOf(sec);
     var tail = sec.querySelector('.frame-tail');
-    var label = (band.textContent || '').trim();
+    var h = sec.querySelector('h1, h2, h3');
+    var label = sec.getAttribute('aria-label') || (h ? h.textContent.trim() : 'Section');
     sec.classList.add('is-pinned');
+    pieces[0].classList.add('is-first');
+    pieces[pieces.length - 1].classList.add('is-last');
 
     var dots = document.createElement('div');
     dots.className = 'frame-dots';
@@ -67,6 +84,7 @@
 
     sec.style.setProperty('--hb', band.offsetHeight + 'px');
     sec.style.setProperty('--th', (tail ? tail.offsetHeight : 0) + 'px');
+    pieces.forEach(function (p) { if (p.scrollHeight > p.clientHeight + 2) p.classList.add('is-tall'); });
 
     function show(i) {
       [].forEach.call(dots.children, function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
@@ -86,34 +104,92 @@
     if (!mq.matches) { root.classList.remove('frames'); return; }
     root.classList.add('frames');
     var h = svh();
+    var header = document.querySelector('.header');
+    var hh = header ? header.offsetHeight : 0;
     sections.forEach(function (sec) {
       if (!sec.querySelector('.frame-pieces')) return;
       // Pin when the content needs more than ~85% of the visible screen: a frame
       // packed edge to edge reads as cramped. data-frame="pin" always pins
       // (testimonials: one quote shows at a time, so it never "overflows").
+      var avail = sec.hasAttribute('data-frame-first') ? h - hh : h;
       var box = sec.firstElementChild;           // the .container
       box.style.minHeight = '0';
       var natural = box.offsetHeight;
       box.style.minHeight = '';
-      if (sec.getAttribute('data-frame') === 'pin' || natural > h * 0.85) pin(sec);
+      // First frames (header + hero) are designed to fill the screen, so they
+      // only pin when they truly don't fit.
+      var limit = sec.hasAttribute('data-frame-first') ? avail : avail * 0.85;
+      if (sec.getAttribute('data-frame') === 'pin' || natural > limit + 2) pin(sec);
     });
   }
 
-  // Re-run only when the layout width changes (rotation, desktop resize), not when
-  // Safari's toolbar shows/hides, which would reshuffle the page mid-scroll.
+  // Re-run only when the layout width changes (rotation, desktop resize) or the
+  // mode flips, not when Safari's toolbar shows/hides mid-scroll.
   var lastW = window.innerWidth, timer;
   function onResize() {
     if (window.innerWidth === lastW && mq.matches === root.classList.contains('frames')) return;
     lastW = window.innerWidth;
     clearTimeout(timer);
     timer = setTimeout(function () {
-      // keep the frame the reader is on after the page reflows
-      var anchor = null;
+      var anchor = null;   // keep the frame the reader is on after the reflow
       sections.forEach(function (s) { var r = s.getBoundingClientRect(); if (r.top <= 1 && r.bottom > 1) anchor = s; });
       layout();
-      if (anchor) anchor.scrollIntoView({ behavior: 'auto', block: 'start' });
+      if (anchor && root.classList.contains('frames')) anchor.scrollIntoView({ behavior: 'auto', block: 'start' });
     }, 150);
   }
+
+  /* ---- Desktop wheel / trackpad: one gesture = one frame ----
+   * CSS snap alone is unreliable with wheels: Chrome treats each pixel-delta
+   * wheel event as its own scroll and snaps it back, and a trackpad's momentum
+   * tail can carry a second frame. On mouse/trackpad devices only (never
+   * touch, so iPhone stays pure native snap), a wheel gesture is turned into
+   * one native smooth scroll to the next stop, and the rest of that gesture
+   * (momentum) is swallowed. Keyboard, scrollbar and touch stay native. */
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var lastT = 0, lastAbs = 0, stepT = 0, stepAbs = 0, locked = false;
+  function stopsY() {
+    var ys = [0], max = document.documentElement.scrollHeight - window.innerHeight;
+    [].forEach.call(document.querySelectorAll('.header, [data-frame], .frame-pieces > *, .frame-group > *, .frame-free, footer.footer'), function (el) {
+      var cs = getComputedStyle(el), a = cs.scrollSnapAlign;
+      if (!a || a === 'none' || cs.display === 'contents') return;
+      var r = el.getBoundingClientRect(), y = r.top + window.scrollY;
+      ys.push(a.indexOf('end') === 0 ? y + r.height - window.innerHeight : y);
+    });
+    return ys.map(function (y) { return Math.max(0, Math.min(max, Math.round(y))); })
+             .sort(function (x, y) { return x - y; });
+  }
+  function inTall() {
+    var t = document.querySelectorAll('.is-tall');
+    for (var i = 0; i < t.length; i++) {
+      var r = t[i].getBoundingClientRect();
+      if (r.top < -2 && r.bottom > window.innerHeight + 2) return true;
+    }
+    return false;
+  }
+  window.addEventListener('wheel', function (e) {
+    var mode = root.getAttribute('data-frames');
+    if (!fine.matches || !root.classList.contains('frames') || mode === 'read' || mode === 'loose') return;
+    if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY) || !e.deltaY || inTall()) return;
+    e.preventDefault();
+    var now = Date.now(), abs = Math.abs(e.deltaY);
+    var gap = now - lastT;
+    // A new gesture: a real pause, a fresh push much stronger than the decaying
+    // momentum, or a mouse wheel still turning at full strength (momentum has
+    // decayed to a fraction by then, so it never qualifies).
+    var fresh = gap > 300 ||
+                (abs > lastAbs * 2.5 && abs > 30 && now - stepT > 600) ||
+                (now - stepT > 800 && abs >= stepAbs * 0.7);
+    lastT = now; lastAbs = abs;
+    if (locked && !fresh) return;
+    if (now - stepT < 350) return;
+    var y = window.scrollY, dir = e.deltaY > 0 ? 1 : -1, ys = stopsY(), target = null;
+    for (var i = 0; i < ys.length; i++) {
+      var k = dir > 0 ? i : ys.length - 1 - i;
+      if (dir > 0 ? ys[k] > y + 2 : ys[k] < y - 2) { target = ys[k]; break; }
+    }
+    locked = true; stepT = now; stepAbs = abs;
+    if (target !== null) window.scrollTo({ top: target, behavior: rm.matches ? 'auto' : 'smooth' });
+  }, { passive: false });
 
   layout();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
