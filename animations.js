@@ -62,7 +62,12 @@
     var targets = collectTargets();
     if (!targets.length) return;
 
+    // Only treat .scroll-container as the scroll root when it actually scrolls
+    // (desktop snap). On mobile it is a plain wrapper and the page scrolls.
     var scrollContainer = document.querySelector('.scroll-container');
+    if (scrollContainer && getComputedStyle(scrollContainer).overflowY === 'visible') {
+      scrollContainer = null;
+    }
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
