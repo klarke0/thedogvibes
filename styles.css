@@ -398,19 +398,34 @@ p:last-child {
     overflow: visible;
   }
 
-  /* First screen = header + hero content, nothing else. The content block is
-     exactly one visible screen tall (svh = Safari toolbar showing) and centred,
-     so spacing is balanced and the trust bar starts below the fold. */
+  /* First screen = header + hero content + Home's trust bar, all inside one
+     visible screen (svh = Safari toolbar showing). iOS 26 Safari draws page
+     content under its floating bottom bar, so anything that starts "just below
+     the fold" peeks out half-hidden behind it. Keeping the bar inside the frame
+     puts it fully on screen; the dark section after it continues the black
+     behind the toolbar. Content is centred in the space above the bar. */
   .hero.snap-section {
     padding: 0;
+    min-height: calc(100vh - 72px);
+    min-height: calc(100svh - 72px);
   }
 
   .hero.snap-section > .container {
-    min-height: calc(100vh - 72px);
-    min-height: calc(100svh - 72px);
+    flex: 1 0 auto;
     margin: 0 auto;
     padding-top: 24px;
     padding-bottom: 24px;
+  }
+
+  .hero .trust-bar {
+    margin-top: 0;
+  }
+
+  /* The dark section after Home's hero is what shows behind Safari's floating
+     bar. Push its headline below that zone so nothing peeks out half-hidden;
+     the bar area reads as plain black continuing from the trust bar. */
+  .hero--logo.snap-section + .section--dark {
+    padding-top: 104px;
   }
 
   .hero--logo .container {
@@ -419,7 +434,7 @@ p:last-child {
   }
 
   .hero__logo-feature {
-    width: clamp(96px, 20svh, 170px);
+    width: clamp(96px, 23svh, 190px);
     max-width: none;
   }
 
@@ -475,8 +490,30 @@ p:last-child {
     padding: 14px 24px;
   }
 
-  /* Short phones (SE-class with toolbar): trim the About photo a bit more. */
+  /* Short phones (SE-class with toolbar): tighten Home so logo, headline,
+     buttons and the trust bar all fit one screen; trim the About photo. */
   @media (max-height: 600px) {
+    .hero--logo.snap-section > .container {
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .hero--logo .container {
+      gap: 10px;
+    }
+
+    .hero--logo .hero__logo-feature {
+      width: 84px;
+    }
+
+    .hero--logo .hero__content--centered p {
+      margin-bottom: 12px;
+    }
+
+    .hero--logo .btn {
+      padding: 13px 24px;
+    }
+
     .hero:not(.hero--logo) .hero__image img {
       height: 120px;
     }
@@ -501,6 +538,24 @@ p:last-child {
   text-transform: uppercase;
   width: 100%;
   margin-top: auto;
+}
+
+/* Phones: the bar is a sentence, not a ticker. Sentence case, normal tracking,
+   so it reads in two lines instead of three lines of wide caps. */
+@media (max-width: 768px) {
+  .trust-bar {
+    padding: 14px 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    text-transform: none;
+    text-wrap: balance;
+  }
+
+  .trust-bar .container {
+    padding: 0 16px;
+  }
 }
 
 /* Grid layouts */
