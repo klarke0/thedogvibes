@@ -517,6 +517,21 @@ p:last-child {
   gap: 32px;
 }
 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* Pain points list */
 .pain-list {
   list-style: none;
