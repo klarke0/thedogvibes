@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
+  <script>/* Phone "frames" mode (board 21): set before first paint, frames.js does the rest */
+    try { if (matchMedia('(max-width: 768px) and (min-height: 520px)').matches) document.documentElement.classList.add('frames'); } catch (e) {}</script>
 </head>
 <body>
 
@@ -61,10 +63,10 @@
   </section>
 
   <!-- Value Proposition -->
-  <section class="section section--dark snap-section">
+  <section class="section section--dark snap-section" data-frame>
     <div class="container narrow text-center" data-reveal>
-      <h2>Training that treats your dog like an individual.</h2>
-      <div style="margin-top: 32px; text-align: left;">
+      <div class="frame-pin"><div class="frame-band"><h2>Training that treats your dog like an individual.</h2></div></div>
+      <div class="frame-pieces" style="margin-top: 32px; text-align: left;">
         <p>Most training fails because it lacks a concrete, customized plan to follow.</p>
         <p>The Dog Vibes is built on one idea: lasting change comes from understanding your dog's history, their triggers, and building a plan to meet them where they're at.</p>
         <p>I use classical and operant conditioning with a focus on positive reinforcement. Force-free, science-backed, proven. Just clear communication and a foundation built on trust.</p>
@@ -73,24 +75,24 @@
   </section>
 
   <!-- Pain Point Hook -->
-  <section class="section section--offwhite snap-section">
+  <section class="section section--offwhite snap-section" data-frame>
     <div class="container narrow text-center" data-reveal>
-      <h2>Sound familiar?</h2>
-      <ul class="pain-list" style="margin-top: 32px; text-align: left;">
+      <div class="frame-pin"><div class="frame-band"><h2>Sound familiar?</h2></div></div>
+      <ul class="pain-list frame-pieces" style="margin-top: 32px; text-align: left;">
         <li>Your dog lunges at every dog on the block. You dread every walk.</li>
         <li>The puppy is adorable. The chaos is not.</li>
         <li>You've watched the YouTube videos. Nothing is sticking.</li>
         <li>You just want a dog you can take anywhere without holding your breath.</li>
       </ul>
-      <p style="margin-top: 40px; font-size: 18px; font-weight: 600;">The Dog Vibes is made for you.</p>
+      <p class="frame-tail" style="margin-top: 40px; font-size: 18px; font-weight: 600;">The Dog Vibes is made for you.</p>
     </div>
   </section>
 
   <!-- How It Works -->
-  <section class="section section--dark snap-section" id="how-it-works">
+  <section class="section section--dark snap-section" id="how-it-works" data-frame>
     <div class="container text-center">
-      <h2>From overwhelmed to relieved. Here's the path.</h2>
-      <div class="hiw-grid" data-stagger style="margin-top: 56px;">
+      <div class="frame-pin"><div class="frame-band"><h2>From overwhelmed to relieved. Here's the path.</h2></div></div>
+      <div class="hiw-grid frame-pieces" data-stagger style="margin-top: 56px;">
         <div class="hiw-step">
           <div class="hiw-step__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M12 11h4" /><path d="M12 16h4" /><path d="M8 11h.01" /><path d="M8 16h.01" /></svg>
@@ -124,17 +126,17 @@
           <p>Hands-on sessions with you and your dog at your home around Portland, plus check-ins, adjustments, and prompt replies from me between sessions.</p>
         </div>
       </div>
-      <div style="margin-top: 48px;">
+      <div class="frame-tail" style="margin-top: 48px;">
         <a href="book.html" class="btn btn--primary-inverted">Book a free call</a>
       </div>
     </div>
   </section>
 
-  <!-- Why Dog Vibes -->
-  <section class="section section--dark snap-section">
+  <!-- Why Dog Vibes (white since board 21 so Home alternates white / black) -->
+  <section class="section section--offwhite snap-section" data-frame>
     <div class="container" data-reveal>
-      <h2 class="text-center">Why owners choose The Dog Vibes.</h2>
-      <div class="grid-3" style="margin-top: 48px; text-align: left;">
+      <div class="frame-pin"><div class="frame-band"><h2 class="text-center">Why owners choose The Dog Vibes.</h2></div></div>
+      <div class="grid-3 frame-pieces" style="margin-top: 48px; text-align: left;">
         <div>
           <h3>Over a decade of experience. Dozens of dogs.</h3>
           <p>For over a decade I ran my own dog care and training work in New York City. Various breeds, different temperaments, and a spectrum of behavioral challenges. That hands-on experience alongside the books and research I've studied shapes everything I do.</p>
@@ -152,10 +154,10 @@
   </section>
 
   <!-- Testimonials -->
-  <section class="section section--offwhite snap-section">
+  <section class="section section--dark snap-section" data-frame="pin">
     <div class="container narrow text-center">
-      <h2 data-reveal>What clients say.</h2>
-      <div class="testimonial-cycler" style="margin-top: 48px;">
+      <div class="frame-pin"><div class="frame-band"><h2 data-reveal>What clients say.</h2></div></div>
+      <div class="testimonial-cycler frame-pieces" style="margin-top: 48px;">
         <div class="testimonial-cycler__quote active">
           <blockquote>"Working with Kevin has been nothing short of transformative for both me and my dog, Pilot. Pilot has always been a bit particular, making it challenging to find a trainer who truly understood him. But from the moment they met, Pilot was absolutely taken with Kevin. We've seen remarkable improvements in his behavior, and our bond has never been stronger."</blockquote>
           <cite>— Mardy &amp; Pilot</cite>
@@ -173,19 +175,19 @@
           <cite>— Rachel &amp; Lumi</cite>
         </div>
       </div>
-      <div style="margin-top: 40px; padding-bottom: 48px;">
-        <a href="book.html" class="btn btn--primary">See if The Dog Vibes is the right fit for you</a>
+      <div class="frame-tail" style="margin-top: 40px; padding-bottom: 48px;">
+        <a href="book.html" class="btn btn--primary-inverted">See if The Dog Vibes is the right fit for you</a>
       </div>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="section section--dark snap-section">
+  <section class="section section--offwhite snap-section" data-frame>
     <div class="container narrow text-center" data-reveal>
       <h2>The first step is just a conversation.</h2>
       <p style="margin-top: 24px;">Tell me about your dog. I'll tell you what I think is going on and how I can help. Just an honest conversation with someone who genuinely loves dogs.</p>
       <div style="margin-top: 32px;">
-        <a href="book.html" class="btn btn--primary-inverted">Book a free call</a>
+        <a href="book.html" class="btn btn--primary">Book a free call</a>
       </div>
       <p style="margin-top: 24px; font-size: 14px; opacity: 0.7;">Free 30-minute call &middot; Camera optional &middot; No commitment required &middot; Portland, OR</p>
     </div>
@@ -234,6 +236,7 @@
       if (!quotes.length) return;
       var current = 0;
       setInterval(function() {
+        if (quotes[0].closest('.is-pinned')) return; /* phone frames: quotes are swiped, not cycled */
         quotes[current].classList.remove('active');
         current = (current + 1) % quotes.length;
         quotes[current].classList.add('active');
@@ -241,5 +244,6 @@
     })();
   </script>
   <script src="animations.js"></script>
+  <script src="frames.js"></script>
 </body>
 </html>
