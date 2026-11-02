@@ -1720,6 +1720,11 @@ html.frames[data-frames="loose"] .frame-free { scroll-snap-align: start; }
 
 /* Short phones (SE): long paragraphs a touch smaller so one fits a screen. */
 @media (max-height: 600px) {
+  .frames .is-pinned .frame-band { padding-bottom: 20px; }
+  .frames .is-pinned .frame-band p { font-size: 16px !important; line-height: 1.45; margin-top: 8px !important; }
+  .frames .is-pinned .frame-band .frame-dots { margin-top: 12px; }
+  .frames .is-pinned .blog-entry-title { font-size: 21px; margin-bottom: 10px; }
+  .frames .is-pinned .blog-entry-excerpt { font-size: 16px; line-height: 1.55; margin-bottom: 12px; }
   .frames .is-pinned .frame-pieces > p,
   .frames .is-pinned .frame-group > p { font-size: 17px; line-height: 1.55; }
 }
